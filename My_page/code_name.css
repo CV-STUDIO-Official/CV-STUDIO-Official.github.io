@@ -1,0 +1,1119 @@
+/* ===== Parallax και Sections ===== */
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('msx-international.ttf') format('truetype');
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
+    color: white;
+      font-family: 'MyCustomFont', sans-serif;
+}
+/* βασικά reset / safety */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* ασφαλιστική δικλείδα για να μην σπρώχνει οριζόντια */
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;                 /* διασφαλίζει width χωρίς overflow */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 6%;         /* προτιμάμε responsive padding */
+  gap: 1rem;
+  background-color: rgba(0,0,0,0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 2000;
+}
+
+/* logo αριστερά */
+.logo {
+  color: #487a30;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .2s ease;
+    font-family: 'MyCustomFont', sans-serif;
+}
+.logo:hover { transform: scale(1.05); }
+
+/* nav ως flex row (desktop) */
+.nav-menu {
+  display: flex;
+  gap: 2rem;                /* αντί για margin-left σε κάθε link */
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* σύνδεσμοι */
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;        /* μικρότερη βασική γραμματοσειρά για να μην σπρώχνει */
+  padding: .25rem .25rem;
+  border-bottom: 3px solid transparent;
+  transition: color .2s, border-color .2s;
+    font-family: 'MyCustomFont', sans-serif;
+}
+.nav-menu a.active,
+.nav-menu a:hover {
+  color: #487a30;
+  border-bottom-color: #487a30;
+}
+
+/* hamburger button (hidden σε desktop) */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: .25rem;
+  width: 42px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* bars inside hamburger */
+.menu-toggle .bar {
+  display: block;
+  width: 26px;
+  height: 2.5px;
+  margin: 4px 0;
+  background: #487a30;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* όταν ανοίγει - ελάχιστη μεταμόρφωση για X effect */
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ========================= */
+/* TABLET (601px - 1024px)   */
+/* ========================= */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .site-header { padding: 0.9rem 5%; }
+  .logo { font-size: 2.2rem; }
+  .nav-menu a { font-size: 1.05rem; }
+  .nav-menu { gap: 1.5rem; }
+}
+
+/* ========================= */
+@media (max-width: 844px) {
+  /* δείχνουμε hamburger */
+  .menu-toggle { display: flex; }
+
+  /* το nav γίνεται collapsible block κάτω από το header με transition στο max-height */
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.98);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    max-height: 0;               /* κλειστό */
+    transition: max-height .35s ease;
+    padding: 0 0;
+  }
+
+  /* όταν active -> ανοίγει με slide */
+  .nav-menu.active {
+    max-height: 480px;           /* αρκετό για 4-5 links (προσαρμόζεις) */
+    padding: 0.8rem 0;
+  }
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: .9rem 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+}
+
+/* extra safety: αν header μεγαλώνει λόγω zoom */
+@media (max-width: 380px) {
+  .logo { font-size: 1.9rem; }
+  .menu-toggle { width: 38px; height: 34px; }
+  .menu-toggle .bar { width: 22px; }
+}
+
+/*  AΡΧΙΖΗ Η ΣΕΛΙΔΑ    */
+
+.section.top {
+  background-color: #203419;
+  position: relative; /* σημαντικό: γίνεται το "πεδίο" για absolute */
+  width: 100%;
+  height: 103.1%; /* όσο χώρο χρειάζεσαι */
+}
+
+/* Ελεύθερη τοποθέτηση */
+.title-img {
+  position: absolute;
+  top:10%;
+  left: 6%;
+  width: 55%;
+}
+
+.text-box {
+  position: absolute;
+  top: 43%;
+  left: 9%;
+  width: 45%;
+  height: fit-content;
+  border: 3px solid #00000000;
+  background-color: #00000095;
+  display: flex;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  letter-spacing: normal; 
+  line-height: 1.2;
+  text-align: justify;
+  color: #e2e2e2;
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+.download-btn {
+  position: absolute;
+  padding: 20px 50px;
+  background-color: #203419;
+  color: rgb(238, 238, 238);
+  border: 2px solid rgb(0, 0, 0);;
+  text-decoration: none;
+  font-size: 1.9rem;
+  font-weight: normal;
+  width: fit-content;
+  display: block;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  letter-spacing: 0.3rem;
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+.download-btn:hover{
+    transform: scale3d(1.03);
+    background-color: rgb(0, 0, 0);;
+    color: #487a30;
+    box-shadow: 0 0 25px rgb(238, 238, 238);
+    border-radius: 5rem;
+}
+
+/* Κουμπιά με δικές τους συντεταγμένες */
+.btn1 {
+  top: 680px;
+  left: 135px;
+}
+.btn2 {
+  top: 600px;
+  left: 135px;
+}
+
+.character-img {
+  position: absolute;
+  top: 50px;
+  right: 70px;
+  width: 750px;
+}
+
+/* ----------------------------------------------------------- */
+/* 📱 Responsive: Tablets & μικρές οθόνες */
+@media (max-width: 1024px) {
+  .title-img {
+    width: 60%;
+    left: 5%;
+    top: 8%;
+  }
+
+  .text-box {
+    width: 70%;
+    left: 5%;
+    top: 45%;
+    font-size: 1.4rem;
+  }
+
+  .character-img {
+    width: 500px;
+    top: 80px;
+    right: 5%;
+  }
+
+  .btn1, .btn2 {
+    left: 5%;
+  }
+
+  .btn1 {
+    top: 78%;
+  }
+
+  .btn2 {
+    top: 88%;
+  }
+}
+
+/* ----------------------------------------------------------- */
+/* 📱 Mobile view (κάτω από 768px) */
+@media (max-width: 844px) {
+  .section.top {
+    height: auto;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title-img,
+  .character-img,
+  .text-box,
+  .btn1,
+  .btn2 {
+    position: static;
+    display: block;
+    margin: 1rem auto;
+    text-align: center;
+  }
+
+  /* Εικόνα τίτλου */
+  .title-img {
+    width: 90%;
+    order: 1;
+    padding-top: 5rem;
+  }
+
+  /* 👇 Εικόνα χαρακτήρα κάτω από τον τίτλο */
+  .character-img {
+    width: 70%;
+    order: 2;
+  }
+
+  /* Κείμενο */
+  .text-box {
+    width: 85%;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    background-color: #00000095;
+    padding: 1rem;
+    order: 3;
+  }
+
+  /* Κουμπιά */
+  .btn1, .btn2 {
+    display: block;
+    margin: 1rem auto;
+    order: 4;
+  }
+
+  .download-btn {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.6rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* === VIDEO BACKGROUND SECTION === */
+.parallax {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+/* Αυτο κάνει το βίντεο ΝΑ ΜΕΝΕΙ ΣΤΑΘΕΡΟ */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 */
+  min-height: 100vh;
+  min-width: 177.77vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.video-background iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ΠΕΡΙΕΧΟΜΕΝΟ ΠΑΝΩ ΑΠΟ ΤΟ VIDEO */
+.parallax-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0); /* Προαιρετικό για contrast */
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+/* ----------------------------------------------------------- */
+/* 📱 Responsive για Tablets */
+@media (max-width: 1024px) {
+  .parallax {
+    height: auto;
+    padding: 6rem 1rem;
+  }
+
+  .video-background {
+    position: absolute; /* σταματά το fixed για αποφυγή zoom & flicker σε tablet */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .parallax-content {
+    max-width: 90%;
+    font-size: 1.3rem;
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ----------------------------------------------------------- */
+/* 📱 Responsive για κινητά */
+@media (max-width: 768px) {
+  .parallax {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .video-background {
+    position: absolute;     /* Στα κινητά “κολλάει” μαζί με το section */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .video-background iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* Γεμίζει όλη την οθόνη χωρίς παραμορφώσεις */
+  }
+
+  .parallax-content {
+    padding: 1.5rem;
+    max-width: 90%;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+  }
+}
+
+.section.story {
+  position: relative; /* Αυτό κάνει το ::before να “κάτσει” σωστά πίσω */
+    background-image: url('vilbg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 20px;
+  height: 800px; /* όσο χώρο χρειάζεσαι */
+  display: flex;
+  flex-direction: column; /* <-- Προστέθηκε αυτό */
+  align-items: left;
+  padding-left: 30px;
+}
+
+.text-story h1 {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 2.2rem;
+  font-weight: normal;
+  width: fit-content;
+  padding: 1rem 2.8rem;
+  letter-spacing: 0.3rem;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-bottom: 20px;
+}
+
+.text-story h2 {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1.9rem;
+  font-weight: normal;
+  width: fit-content;
+  padding: 1rem 2.8rem;
+  letter-spacing: normal;
+  line-height: 1.2;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-bottom: 20px;
+}
+
+.text-story p {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: normal;
+  width: 1180px;
+  padding: 1rem 2.8rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+  font-family: 'MyCustomFont', sans-serif;
+  text-align: justify;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.demo {
+  display: flex;
+  align-items: center;   /* κάθετη στοίχιση στη μέση */
+  gap: 1rem;             /* απόσταση ανάμεσά τους */
+}
+
+.demo h3 {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1.9rem;
+  font-weight: normal;
+  width: fit-content;
+  padding: 1rem 2.8rem;
+  letter-spacing: normal;
+  line-height: 1.2;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-bottom: 20px;
+  margin: 0;                /* να μην σπρώχνει περιττά */
+  display: inline-block;
+}
+
+.demo a {
+  padding: 1rem 2.8rem;
+  background-color: #203419;
+  color: #eee;
+  border: 2px solid #000;
+  text-decoration: none;
+  font-size: 1.9rem;
+  font-weight: normal;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease, 
+              background-color 0.3s ease, 
+              color 0.3s ease, 
+              box-shadow 0.3s ease; /* όρισε τι ακριβώς να κάνει animate */
+  letter-spacing: 0.3rem;
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+.demo a:hover {
+  transform: scale(1.03);
+  background-color: #000;
+  color: #487a30;
+  box-shadow: 0 0 15px #eee; /* λίγο πιο μικρή σκιά για να μην βαραίνει */
+  border-radius: 5rem;       /* χωρίς transition αν δεν χρειάζεται */
+}
+
+.character-gallery {
+  display: flex;
+  justify-content: center;  /* κέντρο στη σειρά */
+  gap: 70px;                /* απόσταση ανάμεσα */
+  margin-top: 5px;
+}
+
+.character-box {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #101c0a;
+  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.334);
+  transition: transform 0.3s ease;
+}
+
+.character-box:hover {
+  width: 305px;
+  height: 405px;
+}
+
+.character-box img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.character-box .overlay {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgb(0, 0, 0), rgba(0,0,0,0));
+  z-index: 1;
+}
+
+.character-box .content {
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  right: 10px;
+  z-index: 2;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.character-box .content h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0px 10px rgba(0, 0, 0, 0.653);
+  text-align: left;
+}
+
+.character-box .content p {
+  font-size: 10px;
+  line-height: 1.4;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0px 10px rgba(0, 0, 0, 0.653);
+  text-align: left;
+}
+
+/* --- TABLET --- */
+@media (max-width: 1024px) {
+  .section.story {
+    padding: 30px 20px;
+    align-items: center;
+  }
+
+  .text-story h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .text-story h2 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .text-story p {
+    font-size: 1.2rem;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .demo {
+    justify-content: center;
+  }
+
+  .character-gallery {
+    gap: 25px;
+  }
+
+  .character-box {
+    width: 220px;
+    height: 300px;
+  }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 844px) {
+  .section.story {
+    padding: 20px;
+    height: fit-content;
+    align-items: center;
+    background-image: url('vilbg.png');
+    background-size: cover;
+    background-position: 70%;
+    background-repeat: no-repeat;
+  }
+
+  .text-story h1 {
+    font-size: 1.8rem;
+    padding-left: 35%;
+  }
+
+  .text-story h2 {
+    font-size: 1.4rem;
+    padding-left: 35%;
+  }
+
+  .text-story p {
+    font-size: 1rem;
+    max-width: 68.5%;
+    padding-left: 34%;
+    text-align: justify;
+  }
+
+  .demo {
+    flex-direction: row;
+  }
+
+  .demo h3 {
+  font-size: 1rem;
+  max-width: 65%;
+   text-align: center;
+  }
+
+  .demo a {
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+    text-align: center;
+  }
+
+  /* ✅ ΔΥΟ ΚΟΥΤΙΑ ΠΑΝΩ + ΕΝΑ ΚΑΤΩ */
+  .character-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .character-box {
+    width: 180px;
+    height: 250px;
+  }
+  .character-box:hover {
+  width: 180px;
+  height: 250px;
+}
+
+.character-box .content h1 {
+  font-size: 1rem;
+}
+
+.character-box .content p {
+  font-size: 0.7rem;
+}
+}
+
+
+
+.section.space {
+  background-color: #3f663000;
+  position: relative; /* σημαντικό: γίνεται το "πεδίο" για absolute */
+  width: 100%;
+  height: 50px; /* όσο χώρο χρειάζεσαι */
+}
+
+/* --- ΚΙΝΗΤΑ (έως 768px) --- */
+@media (max-width: 844px) {
+ .section.space {
+  background-color: #000000;
+}
+}
+
+.section.AI {
+    position: relative; /* Αυτό κάνει το ::before να “κάτσει” σωστά πίσω */
+    background-image: url('zerobg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 20px;
+  height: 800px; /* όσο χώρο χρειάζεσαι */
+  display: flex;
+  flex-direction: column; /* <-- Προστέθηκε αυτό */
+  align-items: left;
+  padding-left: 30px;
+  
+}
+
+.text-AI h1 {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 2.2rem;
+  font-weight: normal;
+  width: fit-content;
+  padding: 1rem 2.8rem;
+  letter-spacing: 0.3rem;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-bottom: 20px;
+  padding-top: 50px;
+}
+
+.text-AI h2 {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1.9rem;
+  font-weight: normal;
+  width: fit-content;
+  padding: 1rem 2.8rem;
+  letter-spacing: normal;
+  line-height: 1.2;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-bottom: 20px;
+}
+
+.text-AI p {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: normal;
+  width: 1180px;
+  padding: 1rem 2.8rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+  font-family: 'MyCustomFont', sans-serif;
+  text-align: justify;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.readmore {
+  display: flex;
+  align-items: center;   /* κάθετη στοίχιση στη μέση */
+  gap: 1rem;             /* απόσταση ανάμεσά τους */
+}
+
+.readmore h3 {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1.9rem;
+  font-weight: normal;
+  width: fit-content;
+  padding: 1rem 2.8rem;
+  letter-spacing: normal;
+  line-height: 1.2;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-bottom: 20px;
+  margin: 0;                /* να μην σπρώχνει περιττά */
+  display: inline-block;
+}
+
+.readmore a {
+  padding: 1rem 2.8rem;
+  background-color: #203419;
+  color: #eee;
+  border: 2px solid #000;
+  text-decoration: none;
+  font-size: 1.9rem;
+  font-weight: normal;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease, 
+              background-color 0.3s ease, 
+              color 0.3s ease, 
+              box-shadow 0.3s ease; /* όρισε τι ακριβώς να κάνει animate */
+  letter-spacing: 0.3rem;
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+.readmore a:hover {
+  transform: scale(1.03);
+  background-color: #000;
+  color: #487a30;
+  box-shadow: 0 0 15px #eee; /* λίγο πιο μικρή σκιά για να μην βαραίνει */
+  border-radius: 5rem;       /* χωρίς transition αν δεν χρειάζεται */
+}
+
+.content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.content h4 {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 2.1rem;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.2;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-top: 40px;
+  text-align: center;
+}
+
+.about-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px; /* Απόσταση μεταξύ των στηλών */
+  width: 950px; /* Μέγιστο πλάτος */
+  margin: 0 auto; /* Κεντράρισμα στο κέντρο σελίδας */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.about-box .column {
+  flex: 1;
+}
+
+.about-box ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-box li {
+  margin-bottom: 40px;
+    margin-top: 20px;
+  font-size: 16px;
+    font-family: 'MyCustomFont', sans-serif;
+}
+
+/* === TABLET (601px - 1024px) === */
+@media (max-width: 1024px) {
+  .text-AI h1 { font-size: 2rem; padding-top: 40px; }
+  .text-AI h2 { font-size: 1.7rem; }
+  .text-AI p { font-size: 1.3rem; }
+  .readmore a { font-size: 1.6rem; padding: 0.8rem 2rem; }
+  .about-box { gap: 30px; }
+  .about-box .column { flex: 1 1 45%; }
+}
+
+/* === MOBILE (<=844px) === */
+@media (max-width: 844px) {
+  .section.AI { 
+    padding: 20px;
+    height: fit-content;
+    align-items: center;
+    background-image: url('zerobg.png');
+    background-size: cover;
+    background-position: 90%;
+    background-repeat: no-repeat; 
+  }
+
+  .text-AI h1 { 
+    font-size: 1.8rem;
+    max-width: 68.5%;
+    padding-left: 34%;
+    padding-top: 1rem;
+    line-height: 2.5rem;
+   }
+
+  .text-AI h2 { 
+    font-size: 1.4rem;
+    max-width: 68.5%;
+    padding-left: 34%; 
+  }
+
+  .text-AI p { 
+    font-size: 1rem;
+    max-width: 68.5%;
+    padding-left: 34%; 
+  }
+
+  .readmore { 
+    flex-direction: row;  
+  }
+
+  .readmore h3 {
+  font-size: 1.1rem;
+  max-width: 100%;
+   text-align: center;
+  }
+
+  .readmore a { 
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+    text-align: center;
+    line-height: 1.2rem;
+  }
+
+  .about-box {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .content h4 {
+    font-size: 1.8rem;
+  }
+
+  .about-box li {
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 2rem;
+}
+
+  .about-box .column { flex: 1 1 100%; }
+}
+
+.section.powerd {
+  position: relative;
+  background-image: url('soldbg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 40px 30px;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.TitleP h1 {
+  padding: 20px 50px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 2.2rem;
+  font-weight: normal;
+  width: fit-content;
+  padding: 1rem 2.8rem;
+  letter-spacing: 0.3rem;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  padding-bottom: 100px;
+  padding-top: 20px;
+}
+
+.icon-link {
+  text-decoration: none; /* να μην φαίνεται υπογραμμισμένο */
+}
+
+.icon-link .icon-box {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-link:hover .icon-box {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* === GRID ICONS === */
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  width: 90%;
+  max-width: 1000px;
+  justify-items: center;
+  align-self: center; 
+}
+
+.icon-box {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 220px;
+}
+
+.icon-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.icon-box img {
+  width: 100px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.icon-box p {
+  color: #fff;
+  font-size: 1.3rem;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .icons-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 844px) {
+  .section.powerd { 
+    background-image: url('soldbg.png');
+    background-size: cover;
+    background-position: 75%;
+    background-repeat: no-repeat; 
+  }
+  
+  .icons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .icon-box {
+    max-width: 180px; 
+    padding: 20px;
+  }
+
+  .icon-box img {
+    width: 70px;
+    height: 70px;
+  }
+  .icon-box p {
+    font-size: 1rem;
+    padding-bottom: 50px;
+  }
+  .TitleP h1 {
+    font-size: 1.8rem;
+    padding-left: 0%;
+  }
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0.5rem;    
+    font-size: 1.2rem;        
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+    background-color: #111;
+}
+

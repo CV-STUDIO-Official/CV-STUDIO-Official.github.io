@@ -1,0 +1,1609 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+html{
+    font-size: 62.5%;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-image: url('neon_bg/project_section.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: white;
+}
+
+/* ========================= */
+/* TABLET (601px - 1024px)   */
+/* ========================= */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    background-size: cover;         /* προσαρμόζει σωστά την εικόνα */
+    background-attachment: scroll;  /* διορθώνει το πρόβλημα του fixed */
+    background-position: center;    
+    height: auto;                   /* επιτρέπει την κύλιση κανονικά */
+  }
+}
+
+/* === Tablets (μέχρι 768px) === */
+@media (max-width: 768px) {
+  body {
+    background-size: cover;         /* προσαρμόζει σωστά την εικόνα */
+    background-attachment: scroll;  /* διορθώνει το πρόβλημα του fixed */
+    background-position: center;    
+    height: auto;                   /* επιτρέπει την κύλιση κανονικά */
+  }
+}
+
+/* === Κινητά (μέχρι 480px) === */
+@media (max-width: 480px) {
+  body {
+    background-size: cover;         /* γεμίζει την οθόνη του κινητού */
+    background-attachment: scroll;  /* στα κινητά δεν δουλεύει καλά το fixed */
+    background-position: top center;
+    height: auto;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;                 /* διασφαλίζει width χωρίς overflow */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 6%;         /* προτιμάμε responsive padding */
+  gap: 1rem;
+  background-color: rgba(0,0,0,0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 2000;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+
+ /* Φτιάχνουμε πολύχρωμο gradient */
+  background: linear-gradient(
+    90deg,
+    #2de2e6,
+    #035ee8,
+    #9700cc,
+    #d40078,
+    #f6019d,
+    #2de2e6
+  );
+
+  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  border-radius: 2px;
+  box-shadow: 0 0 10px #9700cc;
+  animation: moveGradient 6s linear infinite; /* animation loop */
+}
+
+/* === ANIMATION === */
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* logo αριστερά */
+.logo {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .2s ease;
+    font-family: 'MyCustomFont', sans-serif;
+}
+
+.logo:hover { transform: scale(1.05); }
+
+/* nav ως flex row (desktop) */
+.nav-menu {
+  display: flex;
+  gap: 2rem;                
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* σύνδεσμοι */
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;       
+  letter-spacing: 0.1rem;
+  padding: .25rem .25rem;
+  border-bottom: 3px solid transparent;
+  transition: color .2s, border-color .2s;
+    font-family: 'MyCustomFont', sans-serif;
+    text-align: center;
+  text-shadow: 0 0 10px 	#f6019d;
+}
+.nav-menu a.active,
+.nav-menu a:hover {
+  color: #ffffff;
+}
+
+/* hamburger button (hidden σε desktop) */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: .25rem;
+  width: 42px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* bars inside hamburger */
+.menu-toggle .bar {
+  display: block;
+  width: 26px;
+  height: 2.5px;
+  margin: 4px 0;
+  transition: transform .25s ease, opacity .25s ease;
+ background: linear-gradient(
+    90deg,
+    #2de2e6,
+    #035ee8,
+    #9700cc,
+    #d40078,
+    #f6019d,
+    #2de2e6
+  );
+
+  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  animation: moveGradientt 6s linear infinite; /* animation loop */
+}
+
+/* === ANIMATION === */
+@keyframes moveGradientt {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* όταν ανοίγει - ελάχιστη μεταμόρφωση για X effect */
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ========================= */
+/* TABLET (601px - 1024px)   */
+/* ========================= */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .site-header { padding: 0.9rem 5%; }
+  .logo { font-size: 2.2rem; }
+  .nav-menu a { font-size: 1.05rem; }
+  .nav-menu { gap: 1.5rem; }
+}
+
+/* ========================= */
+@media (max-width: 768px) {
+  /* δείχνουμε hamburger */
+  .menu-toggle { display: flex; }
+
+  /* το nav γίνεται collapsible block κάτω από το header με transition στο max-height */
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.98);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    max-height: 0;               /* κλειστό */
+    transition: max-height .35s ease;
+    padding: 0 0;
+  }
+
+  /* όταν active -> ανοίγει με slide */
+  .nav-menu.active {
+    max-height: 480px;           /* αρκετό για 4-5 links (προσαρμόζεις) */
+    padding: 0.8rem 0;
+  }
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: .9rem 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+}
+
+/* extra safety: αν header μεγαλώνει λόγω zoom */
+@media (max-width: 380px) {
+  .logo { font-size: 1.9rem; }
+  .menu-toggle { width: 38px; height: 34px; }
+  .menu-toggle .bar { width: 22px; }
+}
+
+/*////////////////////////////////////////////////////////////////////ΑΡΧΙΖΕΙ Η ΣΕΛΙΔΑ//////////////////////////////////////////////////////*/
+
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: black;
+    padding-top: 7%;
+    height: 100%;
+    padding-bottom: 7%;
+    padding-left: 5%;
+}
+
+.home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+
+ /* Φτιάχνουμε πολύχρωμο gradient */
+  background: linear-gradient(
+    90deg,
+    #2de2e6,
+    #035ee8,
+    #9700cc,
+    #d40078,
+    #f6019d,
+    #2de2e6
+  );
+
+  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  border-radius: 2px;
+  box-shadow: 0 0 10px #9700cc;
+  animation: moveGradient 6s linear infinite; /* animation loop */
+}
+
+/* === ANIMATION === */
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+#home-section {
+    scroll-margin-top: 80px; 
+}
+
+
+.home-content h1{
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.home-content h3{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+.home-content p{
+    font-size: 2rem;
+    max-width: 80%;
+    text-align: justify;
+    padding-top: 3%;
+    text-shadow: 0 0 5px #9700cc;
+}
+
+/* === ΚΟΥΜΠΙ === */
+.btn-wrapper {
+  margin-top: 70px;
+}
+
+.btn {
+  background-color: #000000a9;
+  color: #eee;
+  border: 2px solid #9700cc;
+  font-size: 2rem;
+  letter-spacing: 0.4rem;
+  padding: 1rem 2.8rem;
+  border-radius: 50px;
+  font-family: 'MyCustomFont', sans-serif;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #000000a9;
+  box-shadow: 0 0 15px #9700cc;
+  font-size: 2.6rem;
+}
+
+.home-img {
+  width: 180%;
+  height: 80vh;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
+  background-image: url('RetroWaveMe.png');
+  background-size: cover;
+  background-position:left;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 40px #9700cc, 0 0 10px #ff00ff inset;
+  transition: box-shadow 0.3s ease;
+}
+
+/* pseudo layers για glitch effect */
+.home-img::before,
+.home-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  background-repeat: inherit;
+  mix-blend-mode: screen;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* === Hover ενεργοποίηση εφέ === */
+.home-img:hover::before,
+.home-img:hover::after {
+  opacity: 0.8;
+}
+
+.home-img:hover {
+  animation: borderPulse 2.5s ease-in-out infinite, flicker 3s infinite;
+}
+
+.home-img:hover::before {
+  animation: glitchTop 1s steps(2, end) infinite;
+}
+.home-img:hover::after {
+  animation: glitchBot 1.1s steps(2, end) infinite;
+}
+
+/* Keyframes για glitch */
+@keyframes glitchTop {
+  0%   { clip-path: inset(0 0 75% 0); transform: translate(0,0); }
+  20%  { transform: translate(-8px, -6px) skew(-2deg); }
+  40%  { transform: translate(6px, 4px) skew(2deg); }
+  60%  { transform: translate(-4px, 3px) skew(-1deg); }
+  80%  { transform: translate(2px, -1px); }
+  100% { transform: translate(0,0); }
+}
+@keyframes glitchBot {
+  0%   { clip-path: inset(75% 0 0 0); transform: translate(0,0); }
+  20%  { transform: translate(8px, 6px) skew(2deg); }
+  40%  { transform: translate(-6px, -4px) skew(-2deg); }
+  60%  { transform: translate(4px, -3px) skew(1deg); }
+  80%  { transform: translate(-2px, 1px); }
+  100% { transform: translate(0,0); }
+}
+
+/* Flicker */
+@keyframes flicker {
+  0%, 100% { filter: brightness(100%) contrast(100%); }
+  50% { filter: brightness(125%) contrast(130%); }
+}
+
+/* Glitchy border */
+@keyframes borderPulse {
+  0% {
+    box-shadow:
+      0 0 20px #9700cc,
+      0 0 5px #ff00ff inset;
+  }
+  25% {
+    box-shadow:
+      0 0 35px #ff00ff,
+      0 0 10px #035ee8 inset;
+  }
+  50% {
+    box-shadow:
+      0 0 50px #035ee8,
+      0 0 10px #ff00ff inset;
+  }
+  75% {
+    box-shadow:
+      0 0 35px #ff0099,
+      0 0 8px #035ee8 inset;
+  }
+  100% {
+    box-shadow:
+      0 0 20px #9700cc,
+      0 0 5px #ff00ff inset;
+  }
+}
+
+
+.typewriter {
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+    position: relative;
+}
+
+.typewriter-text {
+    font-size: 34px;
+    color: #ffffff;
+}
+
+/* Αναβόσβησμα cursor */
+.cursor {
+    font-size: 34px;
+    color: #ffffff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ===========================
+   📱 RESPONSIVE DESIGN
+=========================== */
+
+/* === Tablets (max-width: 1024px) === */
+@media (max-width: 1024px) {
+  .home {
+    flex-direction: column;
+    gap: 4rem;
+    padding: 10% 5%;
+    text-align: center;
+    height: fit-content;
+  }
+
+  .home::after {        
+    margin: 3rem 0 0 0;   /* απόσταση από το περιεχόμενο */
+  }
+
+  .home-img {
+    width: 60%;
+    height: 60vh;
+    border-radius: 50%;
+  }
+
+  .home-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .home-content h3 {
+    font-size: 2.5rem;
+  }
+
+  .home-content p {
+    font-size: 1.6rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .btn {
+    font-size: 1.6rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+/* === Κινητά (max-width: 768px) === */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    padding-left: 0;
+     height: auto;  /* ύψος προσαρμοσμένο στο περιεχόμενο */
+    position: relative; /* διατηρούμε για animation αν χρειάζεται */
+  }
+  .home::after {        
+    margin: 3rem 0 0 0;   /* απόσταση από το περιεχόμενο */
+  }
+
+  .home-img {
+    width: 70%;
+    height: 45vh;
+    border-radius: 50%;
+  }
+
+  .home-content h1 {
+    font-size: 2.6rem;
+    padding-left: 0.8rem;
+  }
+
+  .home-content h3 {
+    font-size: 2rem;
+  }
+
+  .home-content p {
+    font-size: 1.4rem;
+    max-width: 90%;
+    text-align: justify;
+    padding-top: 2%;
+  }
+
+  .btn-wrapper {
+    margin-top: 40px;
+  }
+
+  .btn {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.8rem;
+    letter-spacing: 0.2rem;
+  }
+}
+
+/* === Μικρές οθόνες (max-width: 480px) === */
+@media (max-width: 480px) {
+  .home {
+    gap: 2rem;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    height: fit-content;
+  }
+
+  .home-img {
+    width: 80%;
+    height: 40vh;
+  }
+
+  .home-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .home-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .home-content p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    padding-top: 5%;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.6rem;
+  }
+
+  .typewriter,
+  .typewriter-text,
+  .cursor {
+    font-size: 1.6rem;
+  }
+}
+
+/*/////////////////////////////////////////////////////////////////PROJECTS SECTION///////////////////////////////////////////////////////// */
+
+/* === PROJECTS SECTION === */
+.section.projects {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 90px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === ΤΙΤΛΟΣ === */
+.section.projects h2 {
+  color: #fff;
+  font-size: 5rem;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin-bottom: 60px;
+  position: relative;
+
+   /* γραμμή κάτω από το κείμενο με gradient */
+  background-image: linear-gradient(to right, #ff00ff 50%, #00ffff 50%);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% 2px; /* πλάτος 100%, ύψος 4px */
+}
+
+
+/* === GALLERY === */
+.work-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === ΚΟΥΤΙΑ === */
+.work-item {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid #487a30;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 5px; /* Μικρό περιθώριο μέσα στο κουτί */
+}
+
+.item1 {
+  background-color: #d4007826;
+  border-color: #f6019d;
+  
+}
+
+.item2 {
+  background-color: #59007927;
+  border-color: 	#9700cc;
+}
+
+.item3 {
+  background-color: rgba(0, 100, 200, 0.136);
+  border-color: #2de2e6;
+}
+
+.work-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px #9700cc;
+}
+
+/* === ΕΙΚΟΝΕΣ === */
+.work-item img {
+  width: 100%;
+  height: auto; /* <-- δείχνει όλη την εικόνα */
+  object-fit: contain; /* <-- δεν κόβει τίποτα */
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+.work-item:hover::before,
+.work-item:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  animation: glitchLayers 0.8s infinite;
+  pointer-events: none; 
+}
+
+/* Ελαφρύ κόκκινο offset */
+.work-item:hover::before {
+  transform: translate(-2px, 1px);
+  filter: hue-rotate(-20deg);
+}
+
+/* Ελαφρύ κυανό offset */
+.work-item:hover::after {
+  transform: translate(2px, -1px);
+  filter: hue-rotate(20deg);
+}
+
+
+@keyframes glitchLayers {
+  0% { clip-path: inset(10% 0 85% 0); }
+  20% { clip-path: inset(40% 0 50% 0); }
+  40% { clip-path: inset(70% 0 10% 0); }
+  60% { clip-path: inset(30% 0 40% 0); }
+  80% { clip-path: inset(0 0 90% 0); }
+  100% { clip-path: inset(10% 0 85% 0); }
+}
+
+
+/* === ΤΙΤΛΟΙ PROJECTS === */
+.work-item h3 {
+  font-size: 1.2rem;
+  padding: 10px;
+  text-align: center;
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+/* === ΚΟΥΜΠΙ === */
+.see-more-btn-wrapper {
+  margin-top: 70px;
+}
+
+.see-more-btn {
+  background-color: #000000a9;
+  color: #eee;
+  border: 2px solid #9700cc;
+  font-size: 2rem;
+  letter-spacing: 0.4rem;
+  padding: 1rem 2.8rem;
+  border-radius: 50px;
+  font-family: 'MyCustomFont', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+  background-color: #000000a9;
+  box-shadow: 0 0 15px #9700cc;
+  font-size: 2.6rem;
+}
+
+/* ===========================
+   📱 RESPONSIVE DESIGN
+=========================== */
+
+/* === Tablets (max-width: 1024px) === */
+@media (max-width: 1024px) {
+  .section.projects {
+    padding: 60px 0;
+    height: fit-content;
+  }
+
+  .section.projects h2 {
+    font-size: 4rem;
+    margin-bottom: 40px;
+  }
+
+  .work-gallery {
+    gap: 30px;
+    max-width: 900px;
+  }
+
+  .work-item {
+    width: 280px;
+  }
+
+  .see-more-btn {
+    font-size: 1.6rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+/* === Κινητά (max-width: 768px) === */
+@media (max-width: 768px) {
+  .section.projects {
+    padding: 50px 5%;
+    height: fit-content;
+  }
+
+  .section.projects h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+
+  .work-gallery {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .work-item {
+    width: 90%;
+    max-width: 350px;
+    transform: scale(1);
+  }
+
+  .work-item:hover {
+    transform: scale(1.02);
+  }
+
+  .work-item img {
+    border-radius: 8px;
+  }
+
+  .work-item h3 {
+    font-size: 1.1rem;
+    padding: 8px;
+  }
+
+  .see-more-btn-wrapper {
+    margin-top: 50px;
+  }
+
+  .see-more-btn {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+    letter-spacing: 0.2rem;
+  }
+}
+
+/* === Μικρές οθόνες (max-width: 480px) === */
+@media (max-width: 480px) {
+  .section.projects {
+    padding: 40px 5%;
+    height: fit-content;
+  }
+
+  .section.projects h2 {
+    font-size: 2.4rem;
+    margin-bottom: 25px;
+  }
+
+  .work-item {
+    width: 100%;
+    max-width: 320px;
+    padding: 4px;
+  }
+
+  .work-item h3 {
+    font-size: 1rem;
+  }
+
+  .see-more-btn {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.4rem;
+  }
+}
+
+/*/////////////////////////////////////////////////////////////////About me/////////////////////////////////////////////////////////////////// */
+
+.Αbout.Me {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 90px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === ΤΙΤΛΟΣ === */
+.Αbout.Me h2 {
+  color: #fff;
+  font-size: 5rem;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin-bottom: 60px;
+  position: relative;
+
+   /* γραμμή κάτω από το κείμενο με gradient */
+  background-image: linear-gradient(to right, #ff00ff 50%, #00ffff 50%);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% 2px; /* πλάτος 100%, ύψος 4px */
+}
+
+.about-box {
+  display: flex;                  /* Εικόνα αριστερά, κείμενο δεξιά */
+  align-items: center;            /* Κεντράρισμα κάθετα */
+  background-color: rgba(0, 0, 0, 0.7); /* Μαύρο transparent */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #ff00ff; /* Shadow γύρω γύρω */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 1000px;
+  margin: 20px auto;             /* κεντράρισμα στη σελίδα */
+  gap: 20px;                      /* απόσταση εικόνας-κειμένου */
+}
+
+.about-box img {
+  width: 300px;                   /* Πλάτος εικόνας */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;                 /* Να μην μικραίνει */
+}
+
+.about-box p {
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1.5;
+  font-family: 'MyCustomFont', sans-serif;
+  text-align: justify;
+  margin: 0;
+  text-shadow: 0 0 5px #9700cc;
+}
+
+/* Hover effect */
+.about-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 35px #00ffff;
+}
+
+/* === ΚΟΥΜΠΙ === */
+.LEARN-MORE-btn-wrapper {
+  margin-top: 70px;
+}
+
+.LEARN-MORE-btn {
+  background-color: #000000a9;
+  color: #eee;
+  border: 2px solid #9700cc;
+  font-size: 2rem;
+  letter-spacing: 0.4rem;
+  padding: 1rem 2.8rem;
+  border-radius: 50px;
+  font-family: 'MyCustomFont', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.LEARN-MORE-btn:hover {
+  background-color: #000000a9;
+  box-shadow: 0 0 15px #9700cc;
+  font-size: 2.6rem;
+}
+
+/* ===========================
+   📱 RESPONSIVE DESIGN
+=========================== */
+
+/* === Tablets (max-width: 1024px) === */
+@media (max-width: 1024px) {
+  .Αbout.Me {
+    padding: 70px 5%;
+    height: fit-content;
+  }
+
+  .Αbout.Me h2 {
+    font-size: 4rem;
+    margin-bottom: 40px;
+  }
+
+  .about-box {
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .about-box img {
+    width: 250px;
+  }
+
+  .about-box p {
+    font-size: 1.8rem;
+  }
+
+  .LEARN-MORE-btn {
+    font-size: 1.6rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+/* === Κινητά (max-width: 768px) === */
+@media (max-width: 768px) {
+  .Αbout.Me {
+    padding: 60px 5%;
+    height: fit-content;
+  }
+
+  .Αbout.Me h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    background-size: 80% 2px;
+  }
+
+  .about-box {
+    flex-direction: column; /* εικόνα πάνω, κείμενο κάτω */
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    gap: 15px;
+    max-width: 90%;
+  }
+
+  .about-box img {
+    width: 80%;
+    max-width: 280px;
+    border-radius: 10px;
+  }
+
+  .about-box p {
+    font-size: 1.6rem;
+    text-align: justify;
+    padding: 0 10px;
+  }
+
+  .LEARN-MORE-btn-wrapper {
+    margin-top: 50px;
+  }
+
+  .LEARN-MORE-btn {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+    letter-spacing: 0.2rem;
+  }
+}
+
+/* === Μικρές οθόνες (max-width: 480px) === */
+@media (max-width: 480px) {
+  .Αbout.Me {
+    padding: 40px 5%;
+    height: fit-content;
+  }
+
+  .Αbout.Me h2 {
+    font-size: 2.4rem;
+    margin-bottom: 25px;
+    background-size: 70% 2px;
+  }
+
+  .about-box {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .about-box img {
+    width: 90%;
+    max-width: 240px;
+  }
+
+  .about-box p {
+    font-size: 1.4rem;
+  }
+
+  .LEARN-MORE-btn {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.4rem;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////SOCIAL ICONS////////////////////////////////////////////////////////*/
+
+.Contact {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 90px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Contact::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+
+ /* Φτιάχνουμε πολύχρωμο gradient */
+  background: linear-gradient(
+    90deg,
+    #2de2e6,
+    #035ee8,
+    #9700cc,
+    #d40078,
+    #f6019d,
+    #2de2e6
+  );
+
+  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  border-radius: 2px;
+  box-shadow: 0 0 10px #9700cc;
+  animation: moveGradient 6s linear infinite; /* animation loop */
+}
+
+/* === ANIMATION === */
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+ 
+/* === ΤΙΤΛΟΣ === */
+.Contact h2 {
+  color: #fff;
+  font-size: 5rem;
+  font-family: 'MyCustomFont', sans-serif;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin-bottom: 60px;
+  position: relative;
+
+   /* γραμμή κάτω από το κείμενο με gradient */
+  background-image: linear-gradient(to right, #ff00ff 50%, #00ffff 50%);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% 2px; /* πλάτος 100%, ύψος 4px */
+}
+
+  /* Σειρά από εικονίδια με μεγαλύτερη απόσταση */
+  .social-icons {
+    display: flex;
+    gap: 8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Κάθε "κουτί" γύρω από ένα εικονίδιο + λεζάντα */
+  .icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000;
+    padding: 2rem;
+    border-radius: 0%;
+    transition: 0.3s ease;
+    border: 2px solid #2de2e6; /* μπλε περίγραμμα */
+    color:	#2de2e6;
+  }
+  
+  .icon1 {
+  background-color: #00000093;
+  border-color: #f6019d;
+  color:	#ffffff;
+  text-shadow: 0 0 10px #f6019d;
+}
+
+.icon2 {
+  background-color: #00000093;
+  border-color: 	#9700cc;
+  color:	#ffffff;
+  text-shadow: 0 0 10px #9700cc;
+}
+
+.icon3 {
+  background-color: #00000093;
+  border-color: 	#035ee8;
+  color:	#ffffff;
+  text-shadow: 0 0 10px #035ee8;
+}
+
+.icon4 {
+  background-color: #00000093;
+  border-color: #2de2e6;
+  color:	#ffffff;
+  text-shadow: 0 0 10px #2de2e6;
+}
+
+  /* Το ίδιο το εικονίδιο */
+  .icon-box a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;         /* αυξήθηκε από 8rem */
+    height: 12rem;        /* αυξήθηκε από 8rem */
+    background-color: transparent;
+    font-size: 6rem;      /* αυξήθηκε από 4rem */
+    transition: 0.3s ease;
+    border-radius: 50%;
+   animation: colorGloww 3s linear infinite; /* εφέ αλλαγής χρώματος */
+}
+
+/* === ΚΙΝΟΥΜΕΝΑ ΧΡΩΜΑΤΑ === */
+@keyframes colorGloww {
+  0% {
+    color: #2de2e6;
+  }
+  25% {
+    color: #035ee8;
+  }
+  50% {
+    color: #9700cc;
+  }
+  75% {
+    color: #d40078;
+  }
+  100% {
+    color: #f6019d;
+  }
+}
+  
+  /* Hover εφέ */
+  .icon-box a:hover {
+    transform: scale(1.2) translateY(-5px);
+   animation: colorGlow 3s linear infinite; /* εφέ αλλαγής χρώματος */
+}
+
+/* === ΚΙΝΟΥΜΕΝΑ ΧΡΩΜΑΤΑ === */
+@keyframes colorGlow {
+  0% {
+    background-color: #2de2e6;
+    box-shadow: 0 0 25px #2de2e6;
+  }
+  25% {
+    background-color: #035ee8;
+    box-shadow: 0 0 25px #035ee8;
+  }
+  50% {
+    background-color: #9700cc;
+    box-shadow: 0 0 25px #9700cc;
+  }
+  75% {
+    background-color: #d40078;
+    box-shadow: 0 0 25px #d40078;
+  }
+  100% {
+    background-color: #f6019d;
+    box-shadow: 0 0 25px #f6019d;
+  }
+}
+  
+  /* Το όνομα κάτω από το εικονίδιο */
+  .icon-box span {
+    margin-top: 1.5rem;
+    font-size: 1.8rem;   /* λίγο πιο μεγάλο, αν θέλεις */
+    font-weight: 500;
+  }
+
+/* === ΚΟΥΜΠΙ === */
+.email-wrapper {
+  margin-top: 70px;
+}
+
+.email {
+  background-color: #000000a9;
+  color: #eee;
+  border: 2px solid #9700cc;
+  font-size: 2rem;
+  letter-spacing: 0.4rem;
+  padding: 1rem 2.8rem;
+  border-radius: 50px;
+  font-family: 'MyCustomFont', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.email:hover {
+  background-color: #000000a9;
+  box-shadow: 0 0 15px #9700cc;
+  font-size: 2.6rem;
+}
+
+/* ===========================
+   📱 RESPONSIVE DESIGN (βελτιωμένο)
+=========================== */
+
+/* === Tablets (μέχρι 1024px) === */
+@media (max-width: 1024px) {
+  .Contact {
+    padding: 70px 6%;
+  }
+
+  .Contact h2 {
+    font-size: 4.2rem;
+    margin-bottom: 45px;
+  }
+
+  .social-icons {
+    gap: 6rem;
+  }
+
+  .icon-box {
+    padding: 2rem;
+    max-width: 220px;
+  }
+
+  .icon-box a {
+    width: 11rem;
+    height: 11rem;
+    font-size: 5.2rem;
+  }
+
+  .icon-box span {
+    font-size: 1.7rem;
+  }
+
+  .email {
+    font-size: 1.8rem;
+    padding: 1rem 2.2rem;
+  }
+}
+
+/* === Κινητά (μέχρι 768px) === */
+@media (max-width: 768px) {
+  .Contact {
+    padding: 65px 6%;
+  }
+
+  .Contact h2 {
+    font-size: 3.2rem;
+    margin-bottom: 35px;
+    background-size: 80% 2px;
+  }
+
+  /* 🟪 Τα εικονίδια σε 2 στήλες */
+  .social-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem;
+    justify-items: center;
+  }
+
+  .icon-box {
+    padding: 1.6rem;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 12px;
+  }
+
+  .icon-box a {
+    width: 8rem;
+    height: 8rem;
+    font-size: 4rem;
+  }
+
+  .icon-box span {
+    font-size: 1.4rem;
+  }
+
+  .email-wrapper {
+    margin-top: 45px;
+  }
+
+  .email {
+    font-size: 1.5rem;
+    padding: 0.9rem 2rem;
+    letter-spacing: 0.25rem;
+  }
+}
+
+/* === Μικρές οθόνες (μέχρι 480px) === */
+@media (max-width: 480px) {
+  .Contact {
+    padding: 55px 5%;
+  }
+
+  .Contact h2 {
+    font-size: 2.6rem;
+    margin-bottom: 28px;
+    background-size: 70% 2px;
+  }
+
+  /* 🟪 Κρατάμε 2x2 layout αλλά πιο ευρύχωρο */
+  .social-icons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.8rem;
+  }
+
+  .icon-box {
+    max-width: 170px;
+    padding: 1.4rem;
+  }
+
+  .icon-box a {
+    width: 7rem;
+    height: 7rem;
+    font-size: 3.5rem;
+  }
+
+  .icon-box span {
+    font-size: 1.2rem;
+  }
+
+  .email {
+    font-size: 1.3rem;
+    padding: 0.8rem 1.6rem;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////ΤΕΛΟΣ ΣΕΛΙΔΑΣ////////////////////////////////////////////////////////*/
+
+footer {
+    text-align: center;
+    padding: 1rem 0.5rem;     
+    font-size: 2rem;        
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+    background-color: #000000;
+    color: #2de2e6; /* αρχικό χρώμα */
+    animation: footerColor 10s linear infinite; /* animation */
+}
+
+/* Keyframes για εναλλαγή χρωμάτων & shadow */
+@keyframes footerColor {
+    0% {
+        color: #2de2e6;
+        text-shadow: 0 0 5px #2de2e6;
+    }
+    20% {
+        color: #035ee8;
+        text-shadow: 0 0 5px #035ee8;
+    }
+    40% {
+        color: #9700cc;
+        text-shadow: 0 0 5px #9700cc;
+    }
+    60% {
+        color: #d40078;
+        text-shadow: 0 0 5px #d40078;
+    }
+    80% {
+        color: #f6019d;
+        text-shadow: 0 0 5px #f6019d;
+    }
+    100% {
+        color: #2de2e6;
+        text-shadow: 0 0 5px #2de2e6;
+    }
+}
+
+/* === Tablets (μέχρι 768px) === */
+@media (max-width: 768px) {
+  footer {
+    font-size: 1.6rem;       /* λίγο μικρότερη γραμματοσειρά */
+    padding: 1rem 0.8rem;    /* πιο σφιχτό padding */
+    letter-spacing: 0.02rem; /* ελαφρώς πιο κοντά τα γράμματα */
+  }
+}
+
+/* === Κινητά (μέχρι 480px) === */
+@media (max-width: 480px) {
+  footer {
+    font-size: 1.2rem;       /* πιο μικρή γραμματοσειρά για κινητό */
+    padding: 0.8rem 0.5rem;
+    letter-spacing: 0.015rem;
+    line-height: 1.4;        /* καλύτερη αναγνωσιμότητα */
+    text-align: center;      /* βεβαιώνεται ότι μένει κεντραρισμένο */
+  }
+}
+
+/*//////////////////////////////////////////////////////////////////Glitch effect HOVER//////////////////////////////////////////////////////////*/
+
+.glitch-hover {
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 2px #0ff, 0 0 5px #f0f;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Αρχικά χωρίς animation */
+.glitch-hover::before,
+.glitch-hover::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  opacity: 0; /* Δεν φαίνονται μέχρι το hover */
+}
+
+/* Όταν κάνεις hover ξεκινάνε ΟΛΑ */
+.glitch-hover:hover {
+  animation: glitch-skew 3s infinite linear alternate-reverse;
+}
+
+.glitch-hover:hover::before,
+.glitch-hover:hover::after {
+  opacity: 1;
+}
+
+.glitch-hover:hover::before {
+  left: 2px;
+  text-shadow: -2px 0 #0ff;
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch-hover:hover::after {
+  left: -2px;
+  text-shadow: -2px 0 #f0f;
+  animation: glitch-anim2 3s infinite linear alternate-reverse;
+}
+
+/* === KEYFRAMES === */
+@keyframes glitch-anim {
+  0% { clip: rect(10px, 9999px, 30px, 0); }
+  5% { clip: rect(50px, 9999px, 80px, 0); }
+  10% { clip: rect(20px, 9999px, 70px, 0); }
+  15% { clip: rect(60px, 9999px, 90px, 0); }
+  20% { clip: rect(10px, 9999px, 40px, 0); }
+  25% { clip: rect(80px, 9999px, 100px, 0); }
+  100% { clip: rect(0, 9999px, 100px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(60px, 9999px, 90px, 0); }
+  5% { clip: rect(10px, 9999px, 40px, 0); }
+  10% { clip: rect(80px, 9999px, 100px, 0); }
+  15% { clip: rect(20px, 9999px, 70px, 0); }
+  20% { clip: rect(50px, 9999px, 80px, 0); }
+  25% { clip: rect(0, 9999px, 30px, 0); }
+  100% { clip: rect(0, 9999px, 100px, 0); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(5deg); }
+  40% { transform: skew(-5deg); }
+  60% { transform: skew(3deg); }
+  80% { transform: skew(-3deg); }
+  100% { transform: skew(0deg); }
+}
+
+/*////////////////////////////////////////////////////////////////Glitch effect NO HOVER//////////////////////////////////////////////////////////*/
+
+.glitch {
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 2px #0ff, 0 0 5px #f0f;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Αρχικά χωρίς animation */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  opacity: 0; /* Δεν φαίνονται μέχρι το hover */
+}
+
+.glitch::before,
+.glitch::after {
+  opacity: 1;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #0ff;
+  animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #f0f;
+  animation: glitch2 3s infinite linear alternate-reverse;
+}
+
+/* === KEYFRAMES === */
+@keyframes glitch {
+  0% { clip: rect(10px, 9999px, 30px, 0); }
+  5% { clip: rect(50px, 9999px, 80px, 0); }
+  10% { clip: rect(20px, 9999px, 70px, 0); }
+  15% { clip: rect(60px, 9999px, 90px, 0); }
+  20% { clip: rect(10px, 9999px, 40px, 0); }
+  25% { clip: rect(80px, 9999px, 100px, 0); }
+  100% { clip: rect(0, 9999px, 100px, 0); }
+}
+
+@keyframes glitch2 {
+  0% { clip: rect(60px, 9999px, 90px, 0); }
+  5% { clip: rect(10px, 9999px, 40px, 0); }
+  10% { clip: rect(80px, 9999px, 100px, 0); }
+  15% { clip: rect(20px, 9999px, 70px, 0); }
+  20% { clip: rect(50px, 9999px, 80px, 0); }
+  25% { clip: rect(0, 9999px, 30px, 0); }
+  100% { clip: rect(0, 9999px, 100px, 0); }
+}
