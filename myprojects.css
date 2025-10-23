@@ -29,33 +29,30 @@ body{
     color: white;
 }
 
-/* ========================= */
-/* TABLET (601px - 1024px)   */
-/* ========================= */
+
 @media (min-width: 601px) and (max-width: 1024px) {
   body {
-    background-size: cover;         /* προσαρμόζει σωστά την εικόνα */
-    background-attachment: scroll;  /* διορθώνει το πρόβλημα του fixed */
+    background-size: cover;         
+    background-attachment: scroll; 
     background-position: center;    
-    height: auto;                   /* επιτρέπει την κύλιση κανονικά */
+    height: auto;                  
   }
 }
 
-/* === Tablets (μέχρι 768px) === */
 @media (max-width: 768px) {
   body {
-    background-size: cover;         /* προσαρμόζει σωστά την εικόνα */
-    background-attachment: scroll;  /* διορθώνει το πρόβλημα του fixed */
+    background-size: cover;        
+    background-attachment: scroll;  
     background-position: center;    
-    height: auto;                   /* επιτρέπει την κύλιση κανονικά */
+    height: auto;                  
   }
 }
 
-/* === Κινητά (μέχρι 480px) === */
+
 @media (max-width: 480px) {
   body {
-    background-size: cover;         /* γεμίζει την οθόνη του κινητού */
-    background-attachment: scroll;  /* στα κινητά δεν δουλεύει καλά το fixed */
+    background-size: cover;        
+    background-attachment: scroll;  
     background-position: top center;
     height: auto;
     padding: 0;
@@ -63,16 +60,16 @@ body{
   }
 }
 
-/* ===== HEADER ===== */
+
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;                 /* διασφαλίζει width χωρίς overflow */
+  right: 0;                
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 6%;         /* προτιμάμε responsive padding */
+  padding: 1rem 6%;        
   gap: 1rem;
   background-color: rgba(0,0,0,0.95);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -87,7 +84,7 @@ body{
   width: 100%;
   height: 2px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
+
   background: linear-gradient(
     90deg,
     #ffd319,
@@ -98,13 +95,13 @@ body{
     #ffd319
   );
 
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%; 
   border-radius: 2px;
   box-shadow: 0 0 10px #9700cc;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite; 
 }
 
-/* === ANIMATION === */
+
 @keyframes moveGradient {
   0% {
     background-position: 0% 50%;
@@ -114,7 +111,7 @@ body{
   }
 }
 
-/* logo αριστερά */
+
 .logo {
   color: #ffffff;
   font-weight: 800;
@@ -128,7 +125,7 @@ body{
 
 .logo:hover { transform: scale(1.05); }
 
-/* nav ως flex row (desktop) */
+
 .nav-menu {
   display: flex;
   gap: 2rem;                
@@ -137,7 +134,7 @@ body{
   padding: 0;
 }
 
-/* σύνδεσμοι */
+
 .nav-menu a {
   color: #fff;
   text-decoration: none;
@@ -155,7 +152,7 @@ body{
   color: #ffffff;
 }
 
-/* hamburger button (hidden σε desktop) */
+
 .menu-toggle {
   display: none;
   background: transparent;
@@ -168,7 +165,7 @@ body{
   justify-content: center;
 }
 
-/* bars inside hamburger */
+
 .menu-toggle .bar {
   display: block;
   width: 26px;
@@ -185,11 +182,11 @@ body{
     #ffd319
   );
 
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
-  animation: moveGradientt 6s linear infinite; /* animation loop */
+  background-size: 400%; 
+  animation: moveGradientt 6s linear infinite; 
 }
 
-/* === ANIMATION === */
+
 @keyframes moveGradientt {
   0% {
     background-position: 0% 50%;
@@ -199,14 +196,12 @@ body{
   }
 }
 
-/* όταν ανοίγει - ελάχιστη μεταμόρφωση για X effect */
+
 .menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* ========================= */
-/* TABLET (601px - 1024px)   */
-/* ========================= */
+
 @media (min-width: 601px) and (max-width: 1024px) {
   .site-header { padding: 0.9rem 5%; }
   .logo { font-size: 2.2rem; }
@@ -214,12 +209,12 @@ body{
   .nav-menu { gap: 1.5rem; }
 }
 
-/* ========================= */
+
 @media (max-width: 768px) {
-  /* δείχνουμε hamburger */
+
   .menu-toggle { display: flex; }
 
-  /* το nav γίνεται collapsible block κάτω από το header με transition στο max-height */
+
   .nav-menu {
     position: absolute;
     top: 100%;
@@ -230,14 +225,14 @@ body{
     align-items: center;
     gap: 0;
     overflow: hidden;
-    max-height: 0;               /* κλειστό */
+    max-height: 0;              
     transition: max-height .35s ease;
     padding: 0 0;
   }
 
-  /* όταν active -> ανοίγει με slide */
+
   .nav-menu.active {
-    max-height: 480px;           /* αρκετό για 4-5 links (προσαρμόζεις) */
+    max-height: 480px;          
     padding: 0.8rem 0;
   }
 
@@ -251,7 +246,7 @@ body{
   }
 }
 
-/* extra safety: αν header μεγαλώνει λόγω zoom */
+
 @media (max-width: 380px) {
   .logo { font-size: 1.9rem; }
   .menu-toggle { width: 38px; height: 34px; }
@@ -282,9 +277,7 @@ body{
 }
 }
 
-/*////////////////////////////////////////////////////////////////////ΑΡΧΙΖΕΙ Η ΣΕΛΙΔΑ//////////////////////////////////////////////////////*/
 
-/* === PROJECTS SECTION === */
 .section.projects {
   position: relative;
   width: 100%;
@@ -306,7 +299,7 @@ body{
   width: 100%;
   height: 4px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
+ 
   background: linear-gradient(
     90deg,
     #ffd319,
@@ -317,13 +310,13 @@ body{
     #ffd319
   );
 
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%; 
   border-radius: 2px;
   box-shadow: 0 0 10px #9700cc;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite; 
 }
 
-/* === GALLERY === */
+
 .work-gallery {
   display: flex;
   justify-content: center;
@@ -334,7 +327,6 @@ body{
  animation: moveUp 1s ease forwards;
 }
 
-/* === Εφέ αν θέλεις τα κουτάκια να αναδύονται ομαλά === */
 @keyframes moveUp {
   from {
     opacity: 0;
@@ -346,7 +338,7 @@ body{
   }
 }
 
-/* === ΚΟΥΤΙΑ === */
+
 .work-item {
   background-color: #cc008521;
   border: 2px solid #2de2e6;
@@ -355,7 +347,7 @@ body{
   overflow: hidden;
   width: 320px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 5px; /* Μικρό περιθώριο μέσα στο κουτί */
+  padding: 5px; 
 }
 
 .work-item:hover {
@@ -363,11 +355,11 @@ body{
   box-shadow: 0 0 25px #9700cc;
 }
 
-/* === ΕΙΚΟΝΕΣ === */
+
 .work-item img {
   width: 100%;
-  height: auto; /* <-- δείχνει όλη την εικόνα */
-  object-fit: contain; /* <-- δεν κόβει τίποτα */
+  height: auto; 
+  object-fit: contain; 
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.05);
 }
@@ -388,13 +380,12 @@ body{
   pointer-events: none; 
 }
 
-/* Ελαφρύ κόκκινο offset */
 .work-item:hover::before {
   transform: translate(-2px, 1px);
   filter: hue-rotate(-20deg);
 }
 
-/* Ελαφρύ κυανό offset */
+
 .work-item:hover::after {
   transform: translate(2px, -1px);
   filter: hue-rotate(20deg);
@@ -411,7 +402,7 @@ body{
 }
 
 
-/* === ΤΙΤΛΟΙ PROJECTS === */
+
 .work-item h3 {
   font-size: 1.2rem;
   padding: 10px;
@@ -419,7 +410,6 @@ body{
   font-family: 'MyCustomFont', sans-serif;
 }
 
-/*///////////////////////////////////////////////////////////////////////ΤΕΛΟΣ ΣΕΛΙΔΑΣ////////////////////////////////////////////////////////*/
 
 footer {
     text-align: center;
@@ -428,11 +418,11 @@ footer {
     font-weight: 400;
     letter-spacing: 0.03rem;
     background-color: #000000;
-    color: #ffd319; /* αρχικό χρώμα */
-    animation: footerColor 10s linear infinite; /* animation */
+    color: #ffd319; 
+    animation: footerColor 10s linear infinite;
 }
 
-/* Keyframes για εναλλαγή χρωμάτων & shadow */
+
 @keyframes footerColor {
     0% {
         color: #ffd319;
@@ -460,27 +450,26 @@ footer {
     }
 }
 
-/* === Tablets (μέχρι 768px) === */
+
 @media (max-width: 768px) {
   footer {
-    font-size: 1.6rem;       /* λίγο μικρότερη γραμματοσειρά */
-    padding: 1rem 0.8rem;    /* πιο σφιχτό padding */
-    letter-spacing: 0.02rem; /* ελαφρώς πιο κοντά τα γράμματα */
+    font-size: 1.6rem;       
+    padding: 1rem 0.8rem; 
+    letter-spacing: 0.02rem; 
   }
 }
 
-/* === Κινητά (μέχρι 480px) === */
+
 @media (max-width: 480px) {
   footer {
-    font-size: 1.2rem;       /* πιο μικρή γραμματοσειρά για κινητό */
+    font-size: 1.2rem;      
     padding: 0.8rem 0.5rem;
     letter-spacing: 0.015rem;
-    line-height: 1.4;        /* καλύτερη αναγνωσιμότητα */
-    text-align: center;      /* βεβαιώνεται ότι μένει κεντραρισμένο */
+    line-height: 1.4;       
+    text-align: center;      
   }
 }
 
-/*//////////////////////////////////////////////////////////////////Glitch effect HOVER//////////////////////////////////////////////////////////*/
 
 .glitch-hover {
   position: relative;
@@ -491,7 +480,7 @@ footer {
   font-family: 'Orbitron', sans-serif;
 }
 
-/* Αρχικά χωρίς animation */
+
 .glitch-hover::before,
 .glitch-hover::after {
   content: attr(data-text);
@@ -500,10 +489,10 @@ footer {
   width: 100%;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  opacity: 0; /* Δεν φαίνονται μέχρι το hover */
+  opacity: 0; 
 }
 
-/* Όταν κάνεις hover ξεκινάνε ΟΛΑ */
+
 .glitch-hover:hover {
   animation: glitch-skew 3s infinite linear alternate-reverse;
 }
@@ -525,7 +514,7 @@ footer {
   animation: glitch-anim2 3s infinite linear alternate-reverse;
 }
 
-/* === KEYFRAMES === */
+
 @keyframes glitch-anim {
   0% { clip: rect(10px, 9999px, 30px, 0); }
   5% { clip: rect(50px, 9999px, 80px, 0); }
@@ -555,7 +544,7 @@ footer {
   100% { transform: skew(0deg); }
 }
 
-/*////////////////////////////////////////////////////////////////Glitch effect NO HOVER//////////////////////////////////////////////////////////*/
+
 
 .glitch {
   position: relative;
@@ -566,7 +555,7 @@ footer {
   font-family: 'Orbitron', sans-serif;
 }
 
-/* Αρχικά χωρίς animation */
+
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -575,7 +564,7 @@ footer {
   width: 100%;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  opacity: 0; /* Δεν φαίνονται μέχρι το hover */
+  opacity: 0; 
 }
 
 .glitch::before,
@@ -595,7 +584,7 @@ footer {
   animation: glitch2 3s infinite linear alternate-reverse;
 }
 
-/* === KEYFRAMES === */
+
 @keyframes glitch {
   0% { clip: rect(10px, 9999px, 30px, 0); }
   5% { clip: rect(50px, 9999px, 80px, 0); }

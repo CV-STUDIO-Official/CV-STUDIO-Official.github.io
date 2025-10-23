@@ -1,4 +1,4 @@
-/* ===== Parallax και Sections ===== */
+
 @font-face {
   font-family: 'MyCustomFont';
   src: url('msx-international.ttf') format('truetype');
@@ -29,7 +29,7 @@ body{
     color: white;
       font-family: 'MyCustomFont', sans-serif;
 }
-/* βασικά reset / safety */
+
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -38,27 +38,26 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* ασφαλιστική δικλείδα για να μην σπρώχνει οριζόντια */
+  overflow-x: hidden; 
   font-family: 'MyCustomFont', sans-serif;
 }
 
-/* ===== HEADER ===== */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;                 /* διασφαλίζει width χωρίς overflow */
+  right: 0;                
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 6%;         /* προτιμάμε responsive padding */
+  padding: 1rem 6%;         
   gap: 1rem;
   background-color: rgba(0,0,0,0.95);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 2000;
 }
 
-/* logo αριστερά */
+
 .logo {
   color: #487a30;
   font-weight: 800;
@@ -70,20 +69,20 @@ html, body {
 }
 .logo:hover { transform: scale(1.05); }
 
-/* nav ως flex row (desktop) */
+
 .nav-menu {
   display: flex;
-  gap: 2rem;                /* αντί για margin-left σε κάθε link */
+  gap: 2rem;                
   align-items: center;
   margin: 0;
   padding: 0;
 }
 
-/* σύνδεσμοι */
+
 .nav-menu a {
   color: #fff;
   text-decoration: none;
-  font-size: 2rem;        /* μικρότερη βασική γραμματοσειρά για να μην σπρώχνει */
+  font-size: 2rem;        
   padding: .25rem .25rem;
   border-bottom: 3px solid transparent;
   transition: color .2s, border-color .2s;
@@ -95,7 +94,7 @@ html, body {
   border-bottom-color: #487a30;
 }
 
-/* hamburger button (hidden σε desktop) */
+
 .menu-toggle {
   display: none;
   background: transparent;
@@ -108,7 +107,6 @@ html, body {
   justify-content: center;
 }
 
-/* bars inside hamburger */
 .menu-toggle .bar {
   display: block;
   width: 26px;
@@ -118,14 +116,12 @@ html, body {
   transition: transform .25s ease, opacity .25s ease;
 }
 
-/* όταν ανοίγει - ελάχιστη μεταμόρφωση για X effect */
+
 .menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* ========================= */
-/* TABLET (601px - 1024px)   */
-/* ========================= */
+
 @media (min-width: 601px) and (max-width: 1024px) {
   .site-header { padding: 0.9rem 5%; }
   .logo { font-size: 2.2rem; }
@@ -133,12 +129,12 @@ html, body {
   .nav-menu { gap: 1.5rem; }
 }
 
-/* ========================= */
+
 @media (max-width: 844px) {
-  /* δείχνουμε hamburger */
+
   .menu-toggle { display: flex; }
 
-  /* το nav γίνεται collapsible block κάτω από το header με transition στο max-height */
+ 
   .nav-menu {
     position: absolute;
     top: 100%;
@@ -149,14 +145,14 @@ html, body {
     align-items: center;
     gap: 0;
     overflow: hidden;
-    max-height: 0;               /* κλειστό */
+    max-height: 0;               
     transition: max-height .35s ease;
     padding: 0 0;
   }
 
-  /* όταν active -> ανοίγει με slide */
+ 
   .nav-menu.active {
-    max-height: 480px;           /* αρκετό για 4-5 links (προσαρμόζεις) */
+    max-height: 480px;          
     padding: 0.8rem 0;
   }
 
@@ -170,23 +166,23 @@ html, body {
   }
 }
 
-/* extra safety: αν header μεγαλώνει λόγω zoom */
+
 @media (max-width: 380px) {
   .logo { font-size: 1.9rem; }
   .menu-toggle { width: 38px; height: 34px; }
   .menu-toggle .bar { width: 22px; }
 }
 
-/*  AΡΧΙΖΗ Η ΣΕΛΙΔΑ    */
+
 
 .section.top {
   background-color: #203419;
-  position: relative; /* σημαντικό: γίνεται το "πεδίο" για absolute */
+  position: relative; 
   width: 100%;
-  height: 103.1%; /* όσο χώρο χρειάζεσαι */
+  height: 103.1%; 
 }
 
-/* Ελεύθερη τοποθέτηση */
+
 .title-img {
   position: absolute;
   top:10%;
@@ -239,7 +235,7 @@ html, body {
     border-radius: 5rem;
 }
 
-/* Κουμπιά με δικές τους συντεταγμένες */
+
 .btn1 {
   top: 680px;
   left: 135px;
@@ -256,8 +252,7 @@ html, body {
   width: 750px;
 }
 
-/* ----------------------------------------------------------- */
-/* 📱 Responsive: Tablets & μικρές οθόνες */
+
 @media (max-width: 1024px) {
   .title-img {
     width: 60%;
@@ -291,8 +286,7 @@ html, body {
   }
 }
 
-/* ----------------------------------------------------------- */
-/* 📱 Mobile view (κάτω από 768px) */
+
 @media (max-width: 844px) {
   .section.top {
     height: auto;
@@ -313,20 +307,20 @@ html, body {
     text-align: center;
   }
 
-  /* Εικόνα τίτλου */
+ 
   .title-img {
     width: 90%;
     order: 1;
     padding-top: 5rem;
   }
 
-  /* 👇 Εικόνα χαρακτήρα κάτω από τον τίτλο */
+
   .character-img {
     width: 70%;
     order: 2;
   }
 
-  /* Κείμενο */
+
   .text-box {
     width: 85%;
     font-size: 1.1rem;
@@ -336,7 +330,7 @@ html, body {
     order: 3;
   }
 
-  /* Κουμπιά */
+
   .btn1, .btn2 {
     display: block;
     margin: 1rem auto;
@@ -350,7 +344,7 @@ html, body {
   }
 }
 
-/* === VIDEO BACKGROUND SECTION === */
+
 .parallax {
   position: relative;
   width: 100%;
@@ -362,13 +356,13 @@ html, body {
   overflow: hidden;
 }
 
-/* Αυτο κάνει το βίντεο ΝΑ ΜΕΝΕΙ ΣΤΑΘΕΡΟ */
+
 .video-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 56.25vw; /* 16:9 */
+  height: 56.25vw; 
   min-height: 100vh;
   min-width: 177.77vh;
   z-index: -1;
@@ -381,19 +375,17 @@ html, body {
   border: 0;
 }
 
-/* ΠΕΡΙΕΧΟΜΕΝΟ ΠΑΝΩ ΑΠΟ ΤΟ VIDEO */
+
 .parallax-content {
   position: relative;
   z-index: 1;
   text-align: center;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0); /* Προαιρετικό για contrast */
+  background: rgba(0, 0, 0, 0); 
   border-radius: 10px;
   max-width: 600px;
 }
 
-/* ----------------------------------------------------------- */
-/* 📱 Responsive για Tablets */
 @media (max-width: 1024px) {
   .parallax {
     height: auto;
@@ -401,7 +393,7 @@ html, body {
   }
 
   .video-background {
-    position: absolute; /* σταματά το fixed για αποφυγή zoom & flicker σε tablet */
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
@@ -417,8 +409,7 @@ html, body {
   }
 }
 
-/* ----------------------------------------------------------- */
-/* 📱 Responsive για κινητά */
+
 @media (max-width: 768px) {
   .parallax {
     height: 100vh;
@@ -426,7 +417,7 @@ html, body {
   }
 
   .video-background {
-    position: absolute;     /* Στα κινητά “κολλάει” μαζί με το section */
+    position: absolute;    
     top: 0;
     left: 0;
     width: 100%;
@@ -438,7 +429,7 @@ html, body {
   .video-background iframe {
     width: 100%;
     height: 100%;
-    object-fit: cover;      /* Γεμίζει όλη την οθόνη χωρίς παραμορφώσεις */
+    object-fit: cover;     
   }
 
   .parallax-content {
@@ -451,16 +442,16 @@ html, body {
 }
 
 .section.story {
-  position: relative; /* Αυτό κάνει το ::before να “κάτσει” σωστά πίσω */
+  position: relative; 
     background-image: url('vilbg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   width: 100%;
   padding-top: 20px;
-  height: 800px; /* όσο χώρο χρειάζεσαι */
+  height: 800px;
   display: flex;
-  flex-direction: column; /* <-- Προστέθηκε αυτό */
+  flex-direction: column; 
   align-items: left;
   padding-left: 30px;
 }
@@ -511,8 +502,8 @@ html, body {
 
 .demo {
   display: flex;
-  align-items: center;   /* κάθετη στοίχιση στη μέση */
-  gap: 1rem;             /* απόσταση ανάμεσά τους */
+  align-items: center;  
+  gap: 1rem;           
 }
 
 .demo h3 {
@@ -528,7 +519,7 @@ html, body {
   font-family: 'MyCustomFont', sans-serif;
   text-shadow: 0 0 10px rgb(0, 0, 0);
   padding-bottom: 20px;
-  margin: 0;                /* να μην σπρώχνει περιττά */
+  margin: 0;                
   display: inline-block;
 }
 
@@ -545,7 +536,7 @@ html, body {
   transition: transform 0.3s ease, 
               background-color 0.3s ease, 
               color 0.3s ease, 
-              box-shadow 0.3s ease; /* όρισε τι ακριβώς να κάνει animate */
+              box-shadow 0.3s ease; 
   letter-spacing: 0.3rem;
   font-family: 'MyCustomFont', sans-serif;
 }
@@ -554,14 +545,14 @@ html, body {
   transform: scale(1.03);
   background-color: #000;
   color: #487a30;
-  box-shadow: 0 0 15px #eee; /* λίγο πιο μικρή σκιά για να μην βαραίνει */
-  border-radius: 5rem;       /* χωρίς transition αν δεν χρειάζεται */
+  box-shadow: 0 0 15px #eee; 
+  border-radius: 5rem;      
 }
 
 .character-gallery {
   display: flex;
-  justify-content: center;  /* κέντρο στη σειρά */
-  gap: 70px;                /* απόσταση ανάμεσα */
+  justify-content: center;  
+  gap: 70px;               
   margin-top: 5px;
 }
 
@@ -626,7 +617,7 @@ html, body {
   text-align: left;
 }
 
-/* --- TABLET --- */
+
 @media (max-width: 1024px) {
   .section.story {
     padding: 30px 20px;
@@ -663,7 +654,7 @@ html, body {
   }
 }
 
-/* --- MOBILE --- */
+
 @media (max-width: 844px) {
   .section.story {
     padding: 20px;
@@ -708,7 +699,7 @@ html, body {
     text-align: center;
   }
 
-  /* ✅ ΔΥΟ ΚΟΥΤΙΑ ΠΑΝΩ + ΕΝΑ ΚΑΤΩ */
+ 
   .character-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -738,12 +729,12 @@ html, body {
 
 .section.space {
   background-color: #3f663000;
-  position: relative; /* σημαντικό: γίνεται το "πεδίο" για absolute */
+  position: relative; 
   width: 100%;
-  height: 50px; /* όσο χώρο χρειάζεσαι */
+  height: 50px; 
 }
 
-/* --- ΚΙΝΗΤΑ (έως 768px) --- */
+
 @media (max-width: 844px) {
  .section.space {
   background-color: #000000;
@@ -751,16 +742,16 @@ html, body {
 }
 
 .section.AI {
-    position: relative; /* Αυτό κάνει το ::before να “κάτσει” σωστά πίσω */
+    position: relative; 
     background-image: url('zerobg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   width: 100%;
   padding-top: 20px;
-  height: 800px; /* όσο χώρο χρειάζεσαι */
+  height: 800px; 
   display: flex;
-  flex-direction: column; /* <-- Προστέθηκε αυτό */
+  flex-direction: column; 
   align-items: left;
   padding-left: 30px;
   
@@ -813,8 +804,8 @@ html, body {
 
 .readmore {
   display: flex;
-  align-items: center;   /* κάθετη στοίχιση στη μέση */
-  gap: 1rem;             /* απόσταση ανάμεσά τους */
+  align-items: center; 
+  gap: 1rem;           
 }
 
 .readmore h3 {
@@ -830,7 +821,7 @@ html, body {
   font-family: 'MyCustomFont', sans-serif;
   text-shadow: 0 0 10px rgb(0, 0, 0);
   padding-bottom: 20px;
-  margin: 0;                /* να μην σπρώχνει περιττά */
+  margin: 0;                
   display: inline-block;
 }
 
@@ -847,7 +838,7 @@ html, body {
   transition: transform 0.3s ease, 
               background-color 0.3s ease, 
               color 0.3s ease, 
-              box-shadow 0.3s ease; /* όρισε τι ακριβώς να κάνει animate */
+              box-shadow 0.3s ease; 
   letter-spacing: 0.3rem;
   font-family: 'MyCustomFont', sans-serif;
 }
@@ -856,8 +847,8 @@ html, body {
   transform: scale(1.03);
   background-color: #000;
   color: #487a30;
-  box-shadow: 0 0 15px #eee; /* λίγο πιο μικρή σκιά για να μην βαραίνει */
-  border-radius: 5rem;       /* χωρίς transition αν δεν χρειάζεται */
+  box-shadow: 0 0 15px #eee;
+  border-radius: 5rem;    
 }
 
 .content {
@@ -881,9 +872,9 @@ html, body {
 .about-box {
   display: flex;
   justify-content: space-between;
-  gap: 100px; /* Απόσταση μεταξύ των στηλών */
-  width: 950px; /* Μέγιστο πλάτος */
-  margin: 0 auto; /* Κεντράρισμα στο κέντρο σελίδας */
+  gap: 100px;
+  width: 950px; 
+  margin: 0 auto; 
   padding: 20px;
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -906,7 +897,7 @@ html, body {
     font-family: 'MyCustomFont', sans-serif;
 }
 
-/* === TABLET (601px - 1024px) === */
+
 @media (max-width: 1024px) {
   .text-AI h1 { font-size: 2rem; padding-top: 40px; }
   .text-AI h2 { font-size: 1.7rem; }
@@ -916,7 +907,6 @@ html, body {
   .about-box .column { flex: 1 1 45%; }
 }
 
-/* === MOBILE (<=844px) === */
 @media (max-width: 844px) {
   .section.AI { 
     padding: 20px;
@@ -1014,7 +1004,7 @@ html, body {
 }
 
 .icon-link {
-  text-decoration: none; /* να μην φαίνεται υπογραμμισμένο */
+  text-decoration: none; 
 }
 
 .icon-link .icon-box {
@@ -1027,7 +1017,7 @@ html, body {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-/* === GRID ICONS === */
+
 .icons-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1068,7 +1058,7 @@ html, body {
   text-shadow: 0 0 5px rgba(0,0,0,0.8);
 }
 
-/* === RESPONSIVE === */
+
 @media (max-width: 1024px) {
   .icons-grid {
     grid-template-columns: repeat(3, 1fr);

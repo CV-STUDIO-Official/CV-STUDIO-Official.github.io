@@ -1,4 +1,4 @@
-// Typewriter Effect
+
 
 const texts = ["DIGITAL ARTIST", "DEVELOPER", "DESIGNER"];
 let speed = 100;
@@ -27,7 +27,7 @@ function eraseText() {
     }
 }
 
-// Περιμένουμε πρώτα να φορτωθεί το DOM
+
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeWriter, 500);
 });

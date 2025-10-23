@@ -1,4 +1,4 @@
-/* ===== Parallax και Sections ===== */
+
 @font-face {
   font-family: 'MyCustomFont';
   src: url('msx-international.ttf') format('truetype');
@@ -28,7 +28,7 @@ body{
     background-color: rgb(255, 255, 255);
     color: white;
 }
-/* βασικά reset / safety */
+
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -37,19 +37,18 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* ασφαλιστική δικλείδα για να μην σπρώχνει οριζόντια */
+  overflow-x: hidden; 
 }
 
-/* ===== HEADER ===== */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;                 /* διασφαλίζει width χωρίς overflow */
+  right: 0;               
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 6%;         /* προτιμάμε responsive padding */
+  padding: 1rem 6%;         
   gap: 1rem;
   background-color: rgba(0,0,0,0.95);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -64,7 +63,6 @@ html, body {
   width: 100%;
   height: 2px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
   background: linear-gradient(
     90deg,
     #256fff,
@@ -75,12 +73,11 @@ html, body {
     #256fff
   );
 
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%; 
   border-radius: 2px;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite; 
 }
 
-/* logo αριστερά */
 .logo {
   color: #254aa5;
   font-weight: 800;
@@ -89,10 +86,9 @@ html, body {
   text-decoration: none;
   white-space: nowrap;
   transition: transform .2s ease;
- animation: footerColorr 10s linear infinite; /* animation */
+ animation: footerColorr 10s linear infinite; 
 }
 
-/* Keyframes για εναλλαγή χρωμάτων & shadow */
 @keyframes footerColorr {
     0% {
         color: #256fff;
@@ -116,20 +112,18 @@ html, body {
 
 .logo:hover { transform: scale(1.05); }
 
-/* nav ως flex row (desktop) */
 .nav-menu {
   display: flex;
-  gap: 2rem;                /* αντί για margin-left σε κάθε link */
+  gap: 2rem;                
   align-items: center;
   margin: 0;
   padding: 0;
 }
 
-/* σύνδεσμοι */
 .nav-menu a {
   color: #fff;
   text-decoration: none;
-  font-size: 2rem;        /* μικρότερη βασική γραμματοσειρά για να μην σπρώχνει */
+  font-size: 2rem;      
   padding: .25rem .25rem;
   border-bottom: 3px solid transparent;
   transition: color .2s, border-color .2s;
@@ -137,10 +131,9 @@ html, body {
 .nav-menu a.active,
 .nav-menu a:hover {
   color: #254aa5;
- animation: footerColorr 10s linear infinite; /* animation */
+ animation: footerColorr 10s linear infinite; 
 }
 
-/* Keyframes για εναλλαγή χρωμάτων & shadow */
 @keyframes footerColorr {
     0% {
         color: #256fff;
@@ -162,7 +155,6 @@ html, body {
     }
 }
 
-/* hamburger button (hidden σε desktop) */
 .menu-toggle {
   display: none;
   background: transparent;
@@ -175,7 +167,6 @@ html, body {
   justify-content: center;
 }
 
-/* bars inside hamburger */
 .menu-toggle .bar {
   display: block;
   width: 26px;
@@ -185,14 +176,10 @@ html, body {
   transition: transform .25s ease, opacity .25s ease;
 }
 
-/* όταν ανοίγει - ελάχιστη μεταμόρφωση για X effect */
 .menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* ========================= */
-/* TABLET (601px - 1024px)   */
-/* ========================= */
 @media (min-width: 601px) and (max-width: 1024px) {
   .site-header { padding: 0.9rem 5%; }
   .logo { font-size: 2.2rem; }
@@ -200,12 +187,10 @@ html, body {
   .nav-menu { gap: 1.5rem; }
 }
 
-/* ========================= */
 @media (max-width: 844px) {
-  /* δείχνουμε hamburger */
   .menu-toggle { display: flex; }
 
-  /* το nav γίνεται collapsible block κάτω από το header με transition στο max-height */
+
   .nav-menu {
     position: absolute;
     top: 100%;
@@ -216,14 +201,13 @@ html, body {
     align-items: center;
     gap: 0;
     overflow: hidden;
-    max-height: 0;               /* κλειστό */
+    max-height: 0;               
     transition: max-height .35s ease;
     padding: 0 0;
   }
 
-  /* όταν active -> ανοίγει με slide */
   .nav-menu.active {
-    max-height: 480px;           /* αρκετό για 4-5 links (προσαρμόζεις) */
+    max-height: 480px;           
     padding: 0.8rem 0;
   }
 
@@ -237,7 +221,6 @@ html, body {
   }
 }
 
-/* extra safety: αν header μεγαλώνει λόγω zoom */
 @media (max-width: 380px) {
   .logo { font-size: 1.9rem; }
   .menu-toggle { width: 38px; height: 34px; }
@@ -245,9 +228,6 @@ html, body {
 }
 
 
-/*/////////////////////////////////////////////////////////////////START////////////////////////////////////////////////////////////////////////*/
-
-/* === TOP SECTION === */
 .section.top {
   position: relative;
   width: 100%;
@@ -270,7 +250,6 @@ html, body {
   width: 100%;
   height: 4px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
   background: linear-gradient(
     90deg,
     #256fff,
@@ -280,14 +259,14 @@ html, body {
     #25afff,
     #256fff
   );
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%; 
   border-radius: 2px;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite; 
 }
 
-/* === Transparent Box === */
+
 .top-box {
-  background-color: rgba(0, 0, 0, 0.75); /* Μαύρο διάφανο */
+  background-color: rgba(0, 0, 0, 0.75); 
   border-radius: 15px;
   padding: 40px 60px;
   max-width: 1200px;
@@ -305,7 +284,6 @@ html, body {
   box-shadow: 0 0 20px #035ee8;
 }
 
-/* === Κείμενο === */
 .top-description p {
   margin: 0;
   text-shadow: 0 0 10px #254aa5;
@@ -315,9 +293,7 @@ html, body {
   font-size: 2.5rem;
 }
 
-/* === RESPONSIVE DESIGN === */
 
-/* --- Tablets (μέχρι 1024px) --- */
 @media (max-width: 1024px) {
   .section.top {
     padding: 60px 6%;
@@ -331,7 +307,6 @@ html, body {
   }
 }
 
-/* --- Κινητά (μέχρι 768px) --- */
 @media (max-width: 768px) {
   .section.top {
     padding: 50px 5%;
@@ -349,7 +324,6 @@ html, body {
   }
 }
 
-/* --- Μικρές οθόνες (μέχρι 480px) --- */
 @media (max-width: 480px) {
   .section.top {
     padding: 40px 5%;
@@ -361,8 +335,6 @@ html, body {
     line-height: 1.5;
   }
 }
-
-/*//////////////////////////////////////////////////////////////////SIC PARVIS MAGNA///////////////////////////////////////////////////////////*/
 
 .parallax {
   position: relative;           
@@ -386,7 +358,6 @@ html, body {
   width: 100%;
   height: 4px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
   background: linear-gradient(
     90deg,
     #256fff,
@@ -396,9 +367,9 @@ html, body {
     #25afff,
     #256fff
   );
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%; 
   border-radius: 2px;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite; 
 }
 
 .parallax-content {
@@ -406,7 +377,6 @@ html, body {
   height: 100%;
 }
 
-/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .parallax {
     background-attachment: scroll; 
@@ -414,9 +384,6 @@ html, body {
   }
 }
 
-/*///////////////////////////////////////////////////////////////////vision/////////////////////////////////////////////////////////////////////*/
-
-/* === SECTION STYLE === */
 .vision {
   position: relative;
   width: 100%;
@@ -439,7 +406,6 @@ html, body {
   width: 100%;
   height: 4px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
   background: linear-gradient(
     90deg,
     #256fff,
@@ -449,12 +415,11 @@ html, body {
     #25afff,
     #256fff
   );
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%; 
   border-radius: 2px;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite; 
 }
 
-/* === ΤΙΤΛΟΣ === */
 .vision h2 {
   color: #fff;
   font-size: 4.5rem;
@@ -463,14 +428,13 @@ html, body {
   z-index: 2;
 }
 
-/* === ΠΕΡΙΕΧΟΜΕΝΟ === */
+
 .vision-content {
   position: relative;
   width: 100%;
   max-width: 1000px;
 }
 
-/* === ΕΙΚΟΝΑ ΠΙΣΩ ΑΠΟ ΤΟ ΚΟΥΤΙ === */
 .vision-image {
   background-image: url('CV_STUDIO_LOGO.png'); 
   background-size: contain;
@@ -481,14 +445,13 @@ html, body {
   border-radius: 10px;
 }
 
-/* === ΜΑΥΡΟ TRANSPARENT ΚΟΥΤΙ === */
 .vision-box {
   position: absolute;
   top: 0;
   left: 0;
   max-width: 1200px;
   height: 400px;
-  background-color: rgba(0, 0, 0, 0.6); /* τρανσπάρεντ μαύρο */
+  background-color: rgba(0, 0, 0, 0.6); 
   border-radius: 15px;
   display: flex;
   justify-content: center;
@@ -512,7 +475,6 @@ html, body {
   z-index: 2;
 }
 
-/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .vision {
     padding: 10% 5%;
@@ -548,10 +510,6 @@ html, body {
   }
 }
 
-
-/*///////////////////////////////////////////////////////////////EDUCATION///////////////////////////////////////////////////////////////////////*/
-
-/* === ACADEMIC SECTION === */
 .academic {
   position: relative;
   width: 100%;
@@ -564,7 +522,7 @@ html, body {
   text-align: center;
 }
 
-/* === TITLE === */
+
 .academic h2 {
   color: #fff;
   font-size: 4.5rem;
@@ -573,13 +531,13 @@ html, body {
   position: relative;
 }
 
-/* === TRANSPARENT BOX === */
+
 .academic .about-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  background-color: rgba(0, 0, 0, 0.551); /* μαύρο transparent */
+  background-color: rgba(0, 0, 0, 0.551); 
   box-shadow: 0 0 10px #254aa5;
   border-radius: 15px;
   padding: 40px;
@@ -592,7 +550,7 @@ html, body {
   box-shadow: 0 0 20px #035ee8;
 }
 
-/* === IMAGE === */
+
 .academic .about-box img {
   width: 320px;
   height: auto;
@@ -601,7 +559,7 @@ html, body {
   flex-shrink: 0;
 }
 
-/* === TEXT === */
+
 .academic .about-box p {
   color: #fff;
   font-size: 1.8rem;
@@ -621,9 +579,7 @@ html, body {
   color: #2de2e6;
 }
 
-/* === RESPONSIVE DESIGN === */
 
-/* Tablets */
 @media (max-width: 1024px) {
   .academic {
     padding: 60px 6%;
@@ -648,7 +604,7 @@ html, body {
   }
 }
 
-/* Κινητά */
+
 @media (max-width: 768px) {
   .academic {
     padding: 50px 5%;
@@ -659,7 +615,7 @@ html, body {
     margin-bottom: 30px;
   }
 
-  /* Εικόνα πάνω, κείμενο κάτω */
+
   .academic .about-box {
     flex-direction: column;
     text-align: center;
@@ -678,7 +634,6 @@ html, body {
   }
 }
 
-/* Πολύ μικρές οθόνες */
 @media (max-width: 480px) {
   .academic h2 {
     font-size: 2.4rem;
@@ -699,9 +654,6 @@ html, body {
   }
 }
 
-/*//////////////////////////////////////////////////////////////////list////////////////////////////////////////////////////////////////////////*/
-
-/* === SECTION: LIST === */
 .list {
   position: relative;
   width: 100%;
@@ -724,7 +676,6 @@ html, body {
   width: 100%;
   height: 4px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
   background: linear-gradient(
     90deg,
     #256fff,
@@ -734,12 +685,11 @@ html, body {
     #25afff,
     #256fff
   );
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%; 
   border-radius: 2px;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite;
 }
 
-/* === ΤΙΤΛΟΣ === */
 .list h2 {
   color: #fff;
   font-size: 4.5rem;
@@ -749,13 +699,13 @@ html, body {
   z-index: 2;
 }
 
-/* === ΚΟΥΤΙ ΠΟΥ ΠΕΡΙΕΧΕΙ ΤΙΣ ΛΙΣΤΕΣ === */
+
 .about-list {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 60px;
-  background-color: rgba(0, 0, 0, 0.7); /* μαύρο transparent */
+  background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 10px #254aa5;
   border-radius: 15px;
   padding: 50px 60px;
@@ -770,13 +720,12 @@ html, body {
   box-shadow: 0 0 20px #035ee8;
 }
 
-/* === ΚΑΘΕ ΣΤΗΛΗ === */
+
 .about-list .column {
   flex: 1;
   text-align: left;
 }
 
-/* === ΣΤΥΛΙΣΗ ΤΗΣ ΛΙΣΤΑΣ === */
 .about-list ul {
   list-style: none;
   padding: 0;
@@ -792,7 +741,7 @@ html, body {
   text-shadow: 0 0 10px #035ee8;
 }
 
-/* Μικρό neon bullet point */
+
 .about-list li::before {
   content: "•";
   color: #2de2e6;
@@ -802,9 +751,7 @@ html, body {
   text-shadow: 0 0 8px #2de2e6;
 }
 
-/* === RESPONSIVE DESIGN === */
 
-/* Tablets */
 @media (max-width: 1024px) {
   .list {
     padding: 60px 6%;
@@ -825,7 +772,7 @@ html, body {
   }
 }
 
-/* Κινητά */
+
 @media (max-width: 768px) {
   .list {
     padding: 50px 5%;
@@ -836,7 +783,6 @@ html, body {
     margin-bottom: 30px;
   }
 
-  /* Λίστες κάθετα */
   .about-list {
     flex-direction: column;
     align-items: center;
@@ -854,7 +800,7 @@ html, body {
   }
 }
 
-/* Πολύ μικρές οθόνες */
+
 @media (max-width: 480px) {
   .list h2 {
     font-size: 2.4rem;
@@ -868,8 +814,6 @@ html, body {
     font-size: 1.2rem;
   }
 }
-
-/*///////////////////////////////////////////////////////////////Presentations/////////////////////////////////////////////////////////////////*/
 
 
 .presentations {
@@ -888,7 +832,7 @@ html, body {
   width: 100%;
   height: 4px;
 
- /* Φτιάχνουμε πολύχρωμο gradient */
+
   background: linear-gradient(
     90deg,
     #256fff,
@@ -898,9 +842,9 @@ html, body {
     #25afff,
     #256fff
   );
-  background-size: 400%; /* κάνει το gradient μεγαλύτερο ώστε να μπορεί να “κινείται” */
+  background-size: 400%;
   border-radius: 2px;
-  animation: moveGradient 6s linear infinite; /* animation loop */
+  animation: moveGradient 6s linear infinite; 
 }
 
 .title {
@@ -920,7 +864,6 @@ html, body {
   padding-bottom: 10px ;
 }
 
-/* === TEXT === */
 .title p {
   color: #fff;
   font-size: 1.8rem;
@@ -968,7 +911,7 @@ html, body {
   line-height: 1.6;
 }
 
-/* === Tablets (μέχρι 1024px) === */
+
 @media (max-width: 1024px) {
   .presentations {
     padding-top: 40px;
@@ -1007,7 +950,7 @@ html, body {
   }
 }
 
-/* === Κινητά (μέχρι 768px) === */
+
 @media (max-width: 768px) {
   .presentations {
     padding: 60px 5% 40px;
@@ -1056,7 +999,7 @@ html, body {
   }
 }
 
-/* === Πολύ μικρές οθόνες (μέχρι 480px) === */
+
 @media (max-width: 480px) {
   .title h1 {
     font-size: 2.2rem;
@@ -1077,8 +1020,6 @@ html, body {
 }
 
 
-/*//////////////////////////////////////////////////////////////////END////////////////////////////////////////////////////////////////////////*/
-
 footer {
     text-align: center;
     padding: 1rem 0.5rem;     
@@ -1086,11 +1027,10 @@ footer {
     font-weight: 400;
     letter-spacing: 0.03rem;
     background-color: #000000;
-    color: #ffffff; /* αρχικό χρώμα */
- animation: footerColor 10s linear infinite; /* animation */
+    color: #ffffff; 
+ animation: footerColor 10s linear infinite; 
 }
 
-/* Keyframes για εναλλαγή χρωμάτων & shadow */
 @keyframes footerColor {
     0% {
         color: #256fff;
@@ -1118,22 +1058,22 @@ footer {
     }
 }
 
-/* === Tablets (μέχρι 768px) === */
+
 @media (max-width: 768px) {
   footer {
-    font-size: 1.6rem;       /* λίγο μικρότερη γραμματοσειρά */
-    padding: 1rem 0.8rem;    /* πιο σφιχτό padding */
-    letter-spacing: 0.02rem; /* ελαφρώς πιο κοντά τα γράμματα */
+    font-size: 1.6rem;      
+    padding: 1rem 0.8rem;    
+    letter-spacing: 0.02rem;
   }
 }
 
-/* === Κινητά (μέχρι 480px) === */
+
 @media (max-width: 480px) {
   footer {
-    font-size: 1.2rem;       /* πιο μικρή γραμματοσειρά για κινητό */
+    font-size: 1.2rem;       
     padding: 0.8rem 0.5rem;
     letter-spacing: 0.015rem;
-    line-height: 1.4;        /* καλύτερη αναγνωσιμότητα */
-    text-align: center;      /* βεβαιώνεται ότι μένει κεντραρισμένο */
+    line-height: 1.4;       
+    text-align: center;      
   }
 }

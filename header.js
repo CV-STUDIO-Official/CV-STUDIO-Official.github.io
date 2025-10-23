@@ -12,7 +12,6 @@
       nav.setAttribute('aria-hidden', !open ? 'true' : 'false');
     });
 
-    // Προαιρετικά: κλείνουμε menu όταν πατάμε link (καλό για mobile UX)
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         if (nav.classList.contains('active')) {
