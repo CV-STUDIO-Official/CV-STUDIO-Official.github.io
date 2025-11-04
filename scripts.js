@@ -2,7 +2,7 @@ sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.offsetHeight;
     if (window.scrollY >= sectionTop - 50 && window.scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id'); // Παίρνει το ID της ενότητας, π.χ., "home-section"
+        current = section.getAttribute('id');
     }
     
 });
