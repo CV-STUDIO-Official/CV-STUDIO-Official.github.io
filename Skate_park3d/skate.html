@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV_Studio Official Site: Portofolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="skate.css">
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="#" class="logo">CV_STUDIO</a>
+
+  <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </button>
+
+  <nav id="nav-menu" class="nav-menu" aria-hidden="true">
+    <a href="../index.html">Home</a>
+    <a href="../myprojects.html" class="active" >My Projects</a>
+    <a href="../aboutme.html" >About Me</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=cvstudiogr@gmail.com">Contact</a>
+  </nav>
+</header>
+
+
+<section class="section mein">
+  <div class="maincontent">
+    <h1>Ilioupoli SkatePark</h1>
+    <h2>3D Maquettes</h2>
+    <a href="https://sketchfab.com/3d-models/skatepark-22a1f3a7e8a442cba473723bd7a4a19d" target="_blank">
+      <img src="SkatePark_maquet.png" alt="moquet">
+    </a>
+    <h3>Click the Skatepark to view the 3d model</h3>
+    <a href="https://www.blender.org/" target="_blank">
+      <img src="blender_icon.png" alt="blendericon">
+    </a>
+  </div>
+</section>
+
+
+
+<section class="parallax">
+  <div class="video-background">
+    <iframe
+      src="https://www.youtube.com/embed/mvY2_vptjfg?autoplay=1&mute=1&controls=0&loop=1&playlist=mvY2_vptjfg&modestbranding=1&showinfo=0"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <div class="parallax-content">
+    <h1></h1>
+    <p></p>
+  </div>
+</section>
+
+<section class="contents">
+  <h1>Photos</h1>
+  <div class="slider-container">
+  <img id="slider-image" src="flatramp.png" alt="slider">
+  <button class="arrow left" onclick="prevImage()">&#10094;</button>
+  <button class="arrow right" onclick="nextImage()">&#10095;</button>
+</div>
+<h3>Photos from the real Skatepark in the link down below</h3>
+  <a href="https://www.skateparks.gr/skateparks/17-ilioupoli" target="_blank" class="download-btn">SKATEPARKS.GR</a>
+<script src = "skate.js"></script>
+</section>
+
+<footer>
+    <p>&copy; 2025 CV_Studio. All rights reserved.</p>
+    <script src = "../header.js"></script>
+  </footer>
