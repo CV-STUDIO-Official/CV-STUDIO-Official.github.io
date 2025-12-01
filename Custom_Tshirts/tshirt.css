@@ -699,6 +699,11 @@ transition: all 0.3s ease;
   font-size: 2rem;
 }
 
+.top-description a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .top-description p {
   margin: 0;
 }
