@@ -567,110 +567,58 @@ html, body {
 }
 
 
-@media (max-width: 1024px) {
-  .stageone {
-    padding-top: 40px;
-  }
 
-  .title h1 {
-    font-size: 3.5rem;
-    left: 0;
-    text-align: center;
-  }
-
-  .title p {
-    font-size: 1.6rem;
-    padding: 0 20px;
-  }
-
-  .image-side img {
-    width: 80%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .text-boximg {
-    position: relative;
-    left: 0;
-    top: 0;
-    max-width: 90%;
-    margin: 30px auto;
-    background: rgba(0, 0, 0, 0.75);
-    padding: 25px;
-  }
-
-  .text-boximg p {
-    font-size: 1.6rem;
-  }
+@media screen and (max-width: 844px) {
+  
+  body{
+    background-color: rgb(35, 35, 35);
+    
 }
-
-
-@media (max-width: 768px) {
+  
   .stageone {
-    padding: 60px 5% 40px;
-    height: fit-content;
+    padding-top: 10px;
+    height: fit-content; 
+    background-color: rgb(35, 35, 35);
   }
+
 
   .title {
-    align-items: center;
-    padding-left: 0;
+    padding-left: 15px;
   }
 
   .title h1 {
-    font-size: 2.8rem;
-    text-align: center;
+    font-size: 2.5rem;
     left: 0;
-    padding-bottom: 20px;
-  }
-
-  .title p {
-    font-size: 1.4rem;
-    line-height: 1.5;
     text-align: center;
-  }
-
-  .image-side img {
-    width: 90%;
-    height: auto;
-    margin: 20px auto;
-  }
-
-  .text-boximg {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100%;
-    max-width: 95%;
-    margin: 20px auto;
-    padding: 20px;
-    border-left: 2px solid #256fff;
-    background: rgba(0, 0, 0, 0.75);
-  }
-
-  .text-boximg p {
-    font-size: 1.3rem;
-    text-align: center;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .title h1 {
-    font-size: 2.2rem;
+    padding-bottom: 5px;
   }
 
   .title p {
     font-size: 1.2rem;
+    line-height: 1.4;
+    text-align: center;
     padding: 0 10px;
   }
 
+  .image-side iframe {
+    width: 100%;
+    height: 30vh;
+    pointer-events: auto;
+  }
+
   .text-boximg {
-    padding: 15px;
+    position: static; /* παίρνει θέση κάτω από το περιεχόμενο */
+    margin: 20px auto;
+    max-width: 90%;
+    max-height: none;
+    padding: 20px;
+    border-left: none;
+    border-top: 3px solid #A77B4E;
   }
 
   .text-boximg p {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 }
 
